@@ -1,6 +1,6 @@
 /**
  * ATTDIV LLC - Modern Architectural Website Interactive Script
- * Faithful to the live reference site with 100% responsive UX/UI
+ * Dark Theme & 100% Responsive Architecture UX/UI
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -56,7 +56,7 @@ function initNavbar() {
 /* ==========================================================================
    2. INTERACTIVE 3D BLUEPRINT VS. RENDER COMPARISON SLIDER
    - Prevents page dragging / scrolling when sliding
-   - Works flawlessly on touch & mouse
+   - Works flawlessly on touch & mouse with boundary clamping
    ========================================================================== */
 function initComparisonSlider() {
   const viewer = document.querySelector('.comparison-viewer');
@@ -88,7 +88,7 @@ function initComparisonSlider() {
     });
   }
 
-  // Mouse Events with preventDefault to avoid page drag
+  // Mouse Events
   viewer.addEventListener('mousedown', (e) => {
     isDragging = true;
     e.preventDefault();
@@ -121,7 +121,7 @@ function initComparisonSlider() {
     isDragging = false;
   });
 
-  window.addEventListener('touchmove', (e) => {
+  viewer.addEventListener('touchmove', (e) => {
     if (!isDragging) return;
     if (e.cancelable) e.preventDefault();
     const touch = e.touches[0] || e.changedTouches[0];
@@ -145,117 +145,103 @@ function initComparisonSlider() {
       }
     });
   });
-
-  viewer.style.setProperty('--slider-pos', '50%');
 }
 
 /* ==========================================================================
-   3. HOTSPOTS ON 3D BLUEPRINT
+   3. HOTSPOTS ON SIMULATOR
    ========================================================================== */
 function initHotspots() {
-  const hotspots = document.querySelectorAll('.hotspot-pin');
-  const modalOverlay = document.getElementById('projectModal');
-  const modalTitle = document.getElementById('modalTitle');
-  const modalCategory = document.getElementById('modalCategory');
-  const modalDesc = document.getElementById('modalDesc');
-  const modalSpecs = document.getElementById('modalSpecs');
-  const modalImg = document.getElementById('modalImg');
+  const pins = document.querySelectorAll('.hotspot-pin');
+  const cards = document.querySelectorAll('.hotspot-card');
 
-  hotspots.forEach(pin => {
+  pins.forEach(pin => {
     pin.addEventListener('click', (e) => {
       e.stopPropagation();
-      const title = pin.dataset.title || 'Detalle Técnico';
-      const desc = pin.dataset.desc || 'Información de plano 3D';
+      const title = pin.dataset.title;
+      const desc = pin.dataset.desc;
+      const pinNum = pin.textContent.trim();
 
-      if (modalOverlay && modalTitle && modalDesc) {
-        modalTitle.textContent = title;
-        modalCategory.textContent = 'Detalle Técnico 3D - ATTDIV LLC';
-        modalDesc.textContent = desc;
-        if (modalSpecs) modalSpecs.textContent = 'Modulación milimétrica digital • Tolerancia 0 colisiones';
-        if (modalImg) modalImg.src = 'assets/img/plano-sala-web.jpg';
+      cards.forEach(c => {
+        if (c.dataset.pin === pinNum) {
+          c.classList.add('active');
+          c.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        } else {
+          c.classList.remove('active');
+        }
+      });
+    });
+  });
 
-        modalOverlay.classList.add('active');
-        document.body.style.overflow = 'hidden';
-      } else {
-        alert(`[ATTDIV LLC - Detalle 3D]\n\n${title}\n${desc}`);
-      }
+  cards.forEach(card => {
+    card.addEventListener('click', () => {
+      const pinNum = card.dataset.pin;
+      cards.forEach(c => c.classList.remove('active'));
+      card.classList.add('active');
+
+      pins.forEach(p => {
+        if (p.textContent.trim() === pinNum) {
+          p.style.transform = 'scale(1.4)';
+          setTimeout(() => p.style.transform = '', 600);
+        }
+      });
     });
   });
 }
 
 /* ==========================================================================
-   4. INTERACTIVE TOOLTIPS (Desktop Hover + Mobile Tap)
+   4. INTERACTIVE TOOLTIPS ACCESSIBILITY
    ========================================================================== */
 function initInteractiveTooltips() {
   const tooltips = document.querySelectorAll('.has-tooltip');
-
-  tooltips.forEach(item => {
-    item.addEventListener('click', (e) => {
-      if (e.target.closest('.tooltip-card')) return;
-
-      const wasActive = item.classList.contains('active');
-      tooltips.forEach(t => t.classList.remove('active'));
-
-      if (!wasActive) {
-        item.classList.add('active');
-      }
-    });
-  });
-
-  document.addEventListener('click', (e) => {
-    if (!e.target.closest('.has-tooltip')) {
-      tooltips.forEach(t => t.classList.remove('active'));
-    }
+  tooltips.forEach(t => {
+    t.setAttribute('tabindex', '0');
   });
 }
 
 /* ==========================================================================
-   5. PORTFOLIO FILTER & LIGHTBOX MODAL
+   5. PORTFOLIO FILTERS & MODAL LIGHTBOX
    ========================================================================== */
 function initPortfolio() {
   const filterBtns = document.querySelectorAll('.port-filter-btn');
   const projectCards = document.querySelectorAll('.portfolio-card');
   const modalOverlay = document.getElementById('projectModal');
-  const modalClose = document.getElementById('modalCloseBtn');
-  const modalTitle = document.getElementById('modalTitle');
-  const modalCategory = document.getElementById('modalCategory');
-  const modalDesc = document.getElementById('modalDesc');
   const modalImg = document.getElementById('modalImg');
+  const modalTitle = document.getElementById('modalTitle');
+  const modalDesc = document.getElementById('modalDesc');
   const modalSpecs = document.getElementById('modalSpecs');
+  const modalClose = document.querySelector('.modal-close-btn');
 
-  if (filterBtns.length > 0) {
-    filterBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        filterBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        const filter = btn.dataset.filter;
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
 
-        projectCards.forEach(card => {
-          if (filter === 'all' || card.dataset.category === filter) {
-            card.style.display = 'flex';
-            setTimeout(() => { card.style.opacity = '1'; }, 20);
-          } else {
-            card.style.opacity = '0';
-            setTimeout(() => { card.style.display = 'none'; }, 250);
-          }
-        });
+      const filter = btn.dataset.filter;
+
+      projectCards.forEach(card => {
+        if (filter === 'all' || card.dataset.category === filter) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
       });
     });
-  }
+  });
 
   projectCards.forEach(card => {
     card.addEventListener('click', () => {
       if (!modalOverlay) return;
 
       const title = card.querySelector('.portfolio-title')?.textContent || 'Proyecto 3D';
-      const category = card.querySelector('.portfolio-category-tag')?.textContent || 'Planos 3D';
       const imgSrc = card.querySelector('img')?.getAttribute('src') || '';
-      const desc = card.dataset.desc || 'Desarrollo integral de planos arquitectónicos 3D online con entrega digital y cumplimiento normativo.';
-      const specs = card.dataset.specs || 'Formato: DWG + RVT + PDF | Entrega 100% Online';
+      const desc = card.dataset.desc || card.querySelector('.portfolio-desc')?.textContent || 'Desarrollo integral de planos arquitectónicos 3D online con entrega digital y cumplimiento normativo.';
+      const specs = card.dataset.specs || card.querySelector('.portfolio-specs')?.textContent || 'Formato: DWG + RVT + PDF | Entrega 100% Online';
 
       if (modalTitle) modalTitle.textContent = title;
-      if (modalCategory) modalCategory.textContent = category;
-      if (modalImg) modalImg.src = imgSrc;
+      if (modalImg && imgSrc) {
+        modalImg.src = imgSrc;
+        modalImg.style.display = 'block';
+      }
       if (modalDesc) modalDesc.textContent = desc;
       if (modalSpecs) modalSpecs.textContent = specs;
 
@@ -353,10 +339,9 @@ function initContactForm() {
   form.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    const name = form.querySelector('[name="client_name"]')?.value || '';
-    const email = form.querySelector('[name="client_email"]')?.value || '';
-    const phone = form.querySelector('[name="client_phone"]')?.value || '';
-    const type = form.querySelector('[name="project_type"]')?.value || 'Proyecto Arquitectónico';
+    const name = form.querySelector('[name="name"], [name="client_name"]')?.value || 'Cliente';
+    const email = form.querySelector('[name="email"], [name="client_email"]')?.value || 'admin@attdiv.com';
+    const type = form.querySelector('[name="project_type"]')?.value || 'Proyecto Arquitectónico 3D';
 
     const submitBtn = form.querySelector('button[type="submit"]');
     const originalText = submitBtn.innerHTML;
