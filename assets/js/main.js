@@ -1,16 +1,12 @@
 /**
- * ATTDIV LLC - Modern Architectural Website Interactive Script
- * Dark Theme & 100% Responsive Architecture UX/UI
+ * ATTDIV LLC - Modern Mobile-First Architectural Interactive Script
  */
 
 document.addEventListener('DOMContentLoaded', () => {
   initNavbar();
   initComparisonSlider();
   initHotspots();
-  initInteractiveTooltips();
-  initPortfolio();
-  initCounters();
-  initAnimatedIcons();
+  initPortfolioModal();
   initContactForm();
 });
 
@@ -19,34 +15,34 @@ document.addEventListener('DOMContentLoaded', () => {
    ========================================================================== */
 function initNavbar() {
   const header = document.querySelector('.header');
-  const toggleBtn = document.querySelector('.menu-toggle');
-  const navMenu = document.querySelector('.nav-menu');
+  const toggleBtn = document.getElementById('menuToggle');
+  const drawer = document.getElementById('mobileDrawer');
 
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 30) {
+    if (window.scrollY > 25) {
       header?.classList.add('scrolled');
     } else {
       header?.classList.remove('scrolled');
     }
   }, { passive: true });
 
-  if (toggleBtn && navMenu) {
+  if (toggleBtn && drawer) {
     toggleBtn.addEventListener('click', (e) => {
       e.stopPropagation();
-      const isOpen = navMenu.classList.toggle('open');
+      const isOpen = drawer.classList.toggle('open');
       toggleBtn.setAttribute('aria-expanded', isOpen);
     });
 
     document.addEventListener('click', (e) => {
-      if (!navMenu.contains(e.target) && !toggleBtn.contains(e.target) && navMenu.classList.contains('open')) {
-        navMenu.classList.remove('open');
+      if (!drawer.contains(e.target) && !toggleBtn.contains(e.target) && drawer.classList.contains('open')) {
+        drawer.classList.remove('open');
         toggleBtn.setAttribute('aria-expanded', 'false');
       }
     });
 
-    navMenu.querySelectorAll('.nav-link, .nav-menu-cta a, .btn').forEach(link => {
+    drawer.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
-        navMenu.classList.remove('open');
+        drawer.classList.remove('open');
         toggleBtn.setAttribute('aria-expanded', 'false');
       });
     });
@@ -54,13 +50,11 @@ function initNavbar() {
 }
 
 /* ==========================================================================
-   2. INTERACTIVE 3D BLUEPRINT VS. RENDER COMPARISON SLIDER
-   - Prevents page dragging / scrolling when sliding
-   - Works flawlessly on touch & mouse with boundary clamping
+   2. INTERACTIVE 3D SIMULATOR (TOUCH & MOUSE LOCKED)
    ========================================================================== */
 function initComparisonSlider() {
   const viewer = document.querySelector('.comparison-viewer');
-  const toggleBtns = document.querySelectorAll('.sim-toggle-btn');
+  const toggleBtns = document.querySelectorAll('.sim-btn');
 
   if (!viewer) return;
 
@@ -88,7 +82,7 @@ function initComparisonSlider() {
     });
   }
 
-  // Mouse Events
+  // Mouse Events with preventDefault
   viewer.addEventListener('mousedown', (e) => {
     isDragging = true;
     e.preventDefault();
@@ -105,7 +99,7 @@ function initComparisonSlider() {
     updateSliderPosition(e.clientX);
   });
 
-  // Touch Events with gesture lock so dragging slider does not move page
+  // Touch Events (passive: false with e.preventDefault to lock page scroll)
   viewer.addEventListener('touchstart', (e) => {
     isDragging = true;
     if (e.cancelable) e.preventDefault();
@@ -128,7 +122,7 @@ function initComparisonSlider() {
     updateSliderPosition(touch.clientX);
   }, { passive: false });
 
-  // Preset Buttons
+  // Mode Switcher Buttons
   toggleBtns.forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
@@ -148,17 +142,15 @@ function initComparisonSlider() {
 }
 
 /* ==========================================================================
-   3. HOTSPOTS ON SIMULATOR
+   3. SIMULATOR HOTSPOTS
    ========================================================================== */
 function initHotspots() {
   const pins = document.querySelectorAll('.hotspot-pin');
-  const cards = document.querySelectorAll('.hotspot-card');
+  const cards = document.querySelectorAll('.sim-hotspot-card');
 
   pins.forEach(pin => {
     pin.addEventListener('click', (e) => {
       e.stopPropagation();
-      const title = pin.dataset.title;
-      const desc = pin.dataset.desc;
       const pinNum = pin.textContent.trim();
 
       cards.forEach(c => {
@@ -181,7 +173,7 @@ function initHotspots() {
       pins.forEach(p => {
         if (p.textContent.trim() === pinNum) {
           p.style.transform = 'scale(1.4)';
-          setTimeout(() => p.style.transform = '', 600);
+          setTimeout(() => p.style.transform = '', 500);
         }
       });
     });
@@ -189,21 +181,10 @@ function initHotspots() {
 }
 
 /* ==========================================================================
-   4. INTERACTIVE TOOLTIPS ACCESSIBILITY
+   4. PORTFOLIO MODAL LIGHTBOX
    ========================================================================== */
-function initInteractiveTooltips() {
-  const tooltips = document.querySelectorAll('.has-tooltip');
-  tooltips.forEach(t => {
-    t.setAttribute('tabindex', '0');
-  });
-}
-
-/* ==========================================================================
-   5. PORTFOLIO FILTERS & MODAL LIGHTBOX
-   ========================================================================== */
-function initPortfolio() {
-  const filterBtns = document.querySelectorAll('.port-filter-btn');
-  const projectCards = document.querySelectorAll('.portfolio-card');
+function initPortfolioModal() {
+  const projectCards = document.querySelectorAll('.project-card');
   const modalOverlay = document.getElementById('projectModal');
   const modalImg = document.getElementById('modalImg');
   const modalTitle = document.getElementById('modalTitle');
@@ -211,31 +192,14 @@ function initPortfolio() {
   const modalSpecs = document.getElementById('modalSpecs');
   const modalClose = document.querySelector('.modal-close-btn');
 
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      filterBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      const filter = btn.dataset.filter;
-
-      projectCards.forEach(card => {
-        if (filter === 'all' || card.dataset.category === filter) {
-          card.style.display = 'block';
-        } else {
-          card.style.display = 'none';
-        }
-      });
-    });
-  });
-
   projectCards.forEach(card => {
     card.addEventListener('click', () => {
       if (!modalOverlay) return;
 
-      const title = card.querySelector('.portfolio-title')?.textContent || 'Proyecto 3D';
+      const title = card.dataset.title || card.querySelector('.project-title')?.textContent || 'Proyecto 3D';
       const imgSrc = card.querySelector('img')?.getAttribute('src') || '';
-      const desc = card.dataset.desc || card.querySelector('.portfolio-desc')?.textContent || 'Desarrollo integral de planos arquitectónicos 3D online con entrega digital y cumplimiento normativo.';
-      const specs = card.dataset.specs || card.querySelector('.portfolio-specs')?.textContent || 'Formato: DWG + RVT + PDF | Entrega 100% Online';
+      const desc = card.dataset.desc || card.querySelector('.project-desc')?.textContent || 'Desarrollo integral de planos arquitectónicos 3D online con entrega digital y cumplimiento normativo.';
+      const specs = card.dataset.specs || card.querySelector('.project-specs-line')?.textContent || 'Entrega 100% Online';
 
       if (modalTitle) modalTitle.textContent = title;
       if (modalImg && imgSrc) {
@@ -273,64 +237,7 @@ function initPortfolio() {
 }
 
 /* ==========================================================================
-   6. ANIMATED STATISTICS COUNTERS
-   ========================================================================== */
-function initCounters() {
-  const statNumbers = document.querySelectorAll('.stat-num[data-target]');
-  if (statNumbers.length === 0) return;
-
-  const observer = new IntersectionObserver((entries, obs) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const el = entry.target;
-        const target = parseInt(el.dataset.target, 10);
-        const prefix = el.dataset.prefix || '';
-        const suffix = el.dataset.suffix || '';
-        let start = 0;
-        const duration = 1500;
-        const stepTime = 30;
-        const steps = duration / stepTime;
-        const increment = target / steps;
-
-        const timer = setInterval(() => {
-          start += increment;
-          if (start >= target) {
-            start = target;
-            clearInterval(timer);
-          }
-          el.textContent = `${prefix}${Math.floor(start)}${suffix}`;
-        }, stepTime);
-
-        obs.unobserve(el);
-      }
-    });
-  }, { threshold: 0.4 });
-
-  statNumbers.forEach(el => observer.observe(el));
-}
-
-/* ==========================================================================
-   7. ANIMATED ICONS
-   ========================================================================== */
-function initAnimatedIcons() {
-  const iconBoxes = document.querySelectorAll('.icon-box, .step-badge, .diff-icon');
-
-  if ('IntersectionObserver' in window) {
-    const iconObserver = new IntersectionObserver((entries, obs) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('icon-animated-entry');
-          obs.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.2 });
-
-    iconBoxes.forEach(box => iconObserver.observe(box));
-  }
-}
-
-/* ==========================================================================
-   8. CONTACT FORM SUBMISSION FEEDBACK
+   5. CONTACT FORM (Client Feedback & Direct Email)
    ========================================================================== */
 function initContactForm() {
   const form = document.getElementById('quoteContactForm');
@@ -339,23 +246,29 @@ function initContactForm() {
   form.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    const name = form.querySelector('[name="name"], [name="client_name"]')?.value || 'Cliente';
-    const email = form.querySelector('[name="email"], [name="client_email"]')?.value || 'admin@attdiv.com';
-    const type = form.querySelector('[name="project_type"]')?.value || 'Proyecto Arquitectónico 3D';
+    const name = form.querySelector('[name="name"]')?.value || 'Cliente';
+    const email = form.querySelector('[name="email"]')?.value || 'admin@attdiv.com';
+    const type = form.querySelector('[name="project_type"]')?.value || 'Proyecto 3D';
+    const area = form.querySelector('[name="area"]')?.value || 'No especificada';
+    const msg = form.querySelector('[name="message"]')?.value || '';
 
     const submitBtn = form.querySelector('button[type="submit"]');
     const originalText = submitBtn.innerHTML;
 
     submitBtn.disabled = true;
-    submitBtn.innerHTML = `<span>Procesando solicitud técnica...</span>`;
+    submitBtn.innerHTML = `<span>Enviando solicitud...</span>`;
 
     setTimeout(() => {
-      submitBtn.innerHTML = `<span>✓ ¡Solicitud Recibida con Éxito!</span>`;
+      submitBtn.innerHTML = `<span>✓ ¡Solicitud Recibida!</span>`;
       submitBtn.style.backgroundColor = '#10b981';
 
       alert(
-        `¡Muchas gracias, ${name}!\n\nHemos recibido correctamente tu solicitud de planos 3D para "${type}".\nUn especialista de ATTDIV LLC revisará tus especificaciones y se comunicará en menos de 24 horas a ${email}.\n\nTambién puedes escribirnos directamente a: admin@attdiv.com.`
+        `¡Muchas gracias, ${name}!\n\nHemos registrado correctamente tu solicitud de planos 3D para "${type}" (${area}).\nUn especialista técnico de ATTDIV LLC revisará tus especificaciones y se comunicará a ${email}.\n\nTambién puedes escribirnos directamente a: admin@attdiv.com.`
       );
+
+      // Open mail client as well
+      const mailtoUrl = `mailto:admin@attdiv.com?subject=${encodeURIComponent("Solicitud Planos 3D: " + type)}&body=${encodeURIComponent("Nombre: " + name + "\nCorreo: " + email + "\nTipo: " + type + "\nSuperficie: " + area + "\n\nDetalles:\n" + msg)}`;
+      window.location.href = mailtoUrl;
 
       form.reset();
       setTimeout(() => {
@@ -363,6 +276,6 @@ function initContactForm() {
         submitBtn.innerHTML = originalText;
         submitBtn.style.backgroundColor = '';
       }, 4000);
-    }, 1000);
+    }, 800);
   });
 }
