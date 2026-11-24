@@ -3,842 +3,682 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-  <title>ATTDIV LLC | Diseño de Planos 3D Online y Arquitectura Digital</title>
-  <meta name="description" content="Estudio de arquitectura especializado en el diseño y elaboración de planos 3D de construcción 100% online en Estados Unidos. Planos arquitectónicos, estructurales, MEP y modelado BIM.">
-  <link rel="icon" type="image/png" href="assets/img/favicon-attdiv.png?v=4">
-  <link rel="shortcut icon" href="favicon.ico?v=4">
-  <link rel="apple-touch-icon" href="assets/img/favicon-attdiv.png?v=4">
+  <title>ATTDIV LLC | Planos 3D de Construcción, Modelado BIM y Arquitectura Online</title>
+  <meta name="description" content="Especialistas en elaboración de planos 3D de construcción, diseño arquitectónico conceptual y modelado BIM bajo normativas IBC/IRC en todo EE.UU. Servicio 100% online.">
+  <meta name="keywords" content="planos 3d, planos de construccion, modelado bim, planos arquitectonicos ee uu, permisos municipales ibc irc, diseño planos 3d online">
+  <link rel="canonical" href="https://attdiv.com/">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/img/favicon-attdiv.png">
+  <link rel="apple-touch-icon" href="assets/img/favicon-attdiv.png">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="ATTDIV LLC | Planos 3D de Construcción y Modelado BIM">
+  <meta property="og:description" content="Elaboración de planos 3D precisos, modelado BIM y cumplimiento normativo para contratistas y propietarios en todo EE.UU.">
+  <meta property="og:image" content="assets/img/hero-3d-arch.jpg">
+  <meta property="og:type" content="website">
+
+  <!-- Stylesheet -->
   <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
 
-  <!-- Background Ambient Glow Spotlights -->
-  <div class="ambient-glow-1"></div>
-  <div class="ambient-glow-2"></div>
+  <!-- Constructora García Dual Interactive Mouse Cursor -->
+  <div id="cur"></div>
+  <div id="cring"></div>
 
-  <!-- MINIMAL FLOATING HEADER (No topbar cintillo) -->
-  <header class="header">
-    <div class="container nav-container">
-      <a href="index.html" class="logo-brand" aria-label="ATTDIV LLC - Inicio">
-        <img src="assets/img/logo-horizontal-light.png" alt="ATTDIV LLC" class="logo-img">
-      </a>
+  <!-- ========================================================================
+       NAVIGATION BAR
+       ======================================================================== -->
+  <header id="nav">
+    <a href="#hero" class="logo" aria-label="ATTDIV LLC Inicio">
+      <img src="assets/img/logo-horizontal-light.png" alt="ATTDIV LLC Logo">
+    </a>
 
-      <!-- Desktop Navigation Menu -->
-      <nav class="nav-menu" id="desktopNav">
-        <a href="#inicio" class="nav-link active">Inicio</a>
-        <a href="#estudio" class="nav-link">Quiénes Somos</a>
-        <a href="#servicios" class="nav-link">Servicios 3D</a>
-        <a href="#simulador" class="nav-link">Simulador 3D</a>
-        <a href="#metodologia" class="nav-link">Metodología</a>
-        <a href="#portafolio" class="nav-link">Proyectos</a>
-        <a href="#contacto" class="nav-link">Contacto</a>
-      </nav>
+    <ul>
+      <li><a href="#hero">Inicio</a></li>
+      <li><a href="#nosotros">Nosotros</a></li>
+      <li><a href="#servicios">Servicios 3D</a></li>
+      <li><a href="#simulador">Simulador 3D</a></li>
+      <li><a href="#proceso">Metodología</a></li>
+      <li><a href="#proyectos">Proyectos</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
 
-      <!-- Actions -->
-      <div class="nav-actions">
-        <a href="mailto:admin@attdiv.com?subject=Consulta%20Planos%203D%20ATTDIV%20LLC" class="btn btn-primary desktop-cta">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-          <span>Contactar</span>
-        </a>
-        <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-        </button>
-      </div>
+    <div class="nav-actions">
+      <a href="#contacto" class="cta">Cotizar Proyecto</a>
+      <button id="hbg" aria-label="Abrir menú de navegación">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
   </header>
 
-  <!-- MOBILE DRAWER MENU -->
-  <aside class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
-    <div class="drawer-links">
-      <a href="#inicio" class="drawer-link"><span>Inicio</span> <span>→</span></a>
-      <a href="#estudio" class="drawer-link"><span>Quiénes Somos</span> <span>→</span></a>
-      <a href="#servicios" class="drawer-link"><span>Servicios 3D</span> <span>→</span></a>
-      <a href="#simulador" class="drawer-link"><span>Simulador 3D</span> <span>→</span></a>
-      <a href="#metodologia" class="drawer-link"><span>Metodología Online</span> <span>→</span></a>
-      <a href="#portafolio" class="drawer-link"><span>Proyectos</span> <span>→</span></a>
-      <a href="#contacto" class="drawer-link"><span>Contacto Directo</span> <span>→</span></a>
+  <!-- Fullscreen Mobile Navigation Menu -->
+  <div id="mob" aria-hidden="true">
+    <button class="mx" id="mobX" aria-label="Cerrar menú">&times;</button>
+    <a href="#hero" onclick="closeMob()">Inicio</a>
+    <a href="#nosotros" onclick="closeMob()">Nosotros</a>
+    <a href="#servicios" onclick="closeMob()">Servicios 3D</a>
+    <a href="#simulador" onclick="closeMob()">Simulador 3D</a>
+    <a href="#proceso" onclick="closeMob()">Metodología</a>
+    <a href="#proyectos" onclick="closeMob()">Proyectos</a>
+    <a href="#contacto" onclick="closeMob()">Contacto</a>
+    <div class="mob-meta">
+      <p>ATTDIV LLC • Planos 3D de Construcción</p>
+      <p style="color: var(--sand); margin-top: 4px;">admin@attdiv.com</p>
     </div>
-
-    <div class="drawer-footer">
-      <a href="mailto:admin@attdiv.com?subject=Consulta%20Planos%203D%20ATTDIV%20LLC" class="btn btn-primary btn-block-mobile">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-        <span>Escribir al Correo</span>
-      </a>
-      <span class="font-mono text-muted" style="font-size:0.75rem;text-align:center;">
-        admin@attdiv.com • Albuquerque, NM
-      </span>
-    </div>
-  </aside>
+  </div>
 
   <main>
-    <!-- ==========================================================================
-         HERO SECTION (Panoramic Architectural Showcase)
-         ========================================================================== -->
-    <section class="hero-section" id="inicio">
-      <div class="container">
-        <div class="hero-header-box">
-          <!-- Status Pill relocated here as high-impact tag -->
-          <div class="section-pill">
-            <span class="pulse-dot"></span>
-            <span>SERVICIO 100% ONLINE • ENTREGAS TÉCNICAS EN TODO EE.UU.</span>
-          </div>
+    <!-- ========================================================================
+         HERO SECTION (High-Impact Minimalist Luxury - NO Cintillo Banner)
+         ======================================================================== -->
+    <section id="hero">
+      <div class="hbg-img"></div>
+      <div class="hline"></div>
 
-          <h1 class="hero-main-title">
-            Diseño y Elaboración de 
-            <span class="hero-highlight">Planos 3D de Construcción</span>
-          </h1>
+      <div class="hcont">
+        <div class="htag">Diseño Arquitectónico & Modelado BIM 3D</div>
+        <h1 class="htitle">
+          <span>INGENIERÍA &</span>
+          <span>PLANOS 3D</span>
+          <span>DE PRECISIÓN</span>
+        </h1>
+        <p class="hsub">
+          Desarrollo técnico de planos constructivos residenciales y comerciales en 3D bajo normativas estadounidenses IBC/IRC. Tolerancia cero colisiones y visualización fotorrealista.
+        </p>
 
-          <p class="hero-lead-text">
-            En <strong>ATTDIV LLC</strong> desarrollamos proyectos técnicos integrales y planos 3D <strong>100% ONLINE</strong>: desde volumetría tridimensional y <strong>modelado BIM coordinado</strong>, hasta planimetría constructiva para <strong>licencias municipales (IBC/IRC)</strong> y ejecución de obra con tolerancia cero colisiones.
-          </p>
-
-          <div class="hero-cta-group">
-            <a href="mailto:admin@attdiv.com?subject=Consulta%20Planos%203D%20ATTDIV%20LLC" class="btn btn-primary btn-block-mobile">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-              <span>Solicitar Asesoría por Correo</span>
-            </a>
-            <a href="#simulador" class="btn btn-secondary btn-block-mobile">
-              <span>Probar Simulador 3D</span>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </a>
-          </div>
+        <div class="hbtns">
+          <a href="#contacto" class="btn-w">
+            <span>Solicitar Asesoría</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#simulador" class="btn-g">
+            <span>Ver Simulador 3D</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+          </a>
         </div>
+      </div>
 
-        <!-- KPI Ticker Bar -->
-        <div class="kpi-ticker">
-          <div class="kpi-card">
-            <span class="kpi-num">+15 Años</span>
-            <span class="kpi-label">Experiencia Técnica</span>
-          </div>
-          <div class="kpi-card">
-            <span class="kpi-num">100% Online</span>
-            <span class="kpi-label">Gestión en la Nube</span>
-          </div>
-          <div class="kpi-card">
-            <span class="kpi-num">BIM 3D</span>
-            <span class="kpi-label">Cero Colisiones</span>
-          </div>
-          <div class="kpi-card">
-            <span class="kpi-num">IBC / IRC</span>
-            <span class="kpi-label">Permisos Oficiales</span>
-          </div>
+      <!-- Floating Stats Box -->
+      <div class="hstats">
+        <div class="hstat">
+          <span class="hstat-n" data-c="15">15+</span>
+          <span class="hstat-l">Años Experiencia</span>
         </div>
+        <div class="hstat">
+          <span class="hstat-n" data-c="50">50+</span>
+          <span class="hstat-l">Estados EE.UU.</span>
+        </div>
+        <div class="hstat">
+          <span class="hstat-n" data-c="100">100%</span>
+          <span class="hstat-l">Servicio Online</span>
+        </div>
+      </div>
 
-        <!-- Centerpiece Architectural Blueprint Frame -->
-        <div class="hero-blueprint-frame">
-          <div class="frame-top-bar font-mono">
-            <span>PROYECTO TÉCNICO • RESIDENCIAL CONTEMPORÁNEO • ESCALA 1:50</span>
-            <div class="frame-badges">
-              <span class="frame-badge">3D CAD</span>
-              <span class="frame-badge">BIM REVIT</span>
-              <span class="frame-badge">DWG / PDF</span>
-            </div>
-          </div>
-          <img src="assets/img/hero-3d-arch.jpg" alt="Modelado y Plano 3D Arquitectónico ATTDIV LLC" class="hero-blueprint-img">
-        </div>
+      <!-- Scroll Down Indicator -->
+      <div class="scri">
+        <span>Desplazar</span>
+        <div class="scrln"></div>
       </div>
     </section>
 
-    <!-- ==========================================================================
-         BENTO GRID - QUIÉNES SOMOS (Bespoke Studio Narrative)
-         ========================================================================== -->
-    <section class="bento-section" id="estudio">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-pill"><span class="pulse-dot"></span> ESTUDIO DE ARQUITECTURA DIGITAL</span>
-          <h2 class="section-title">Ingeniería & Planos 3D de Alta Precisión</h2>
-          <p class="section-subtitle">
-            Combinamos diseño arquitectónico contemporáneo, cálculo estructural tridimensional y coordinación MEP para entregar proyectos ejecutivos listos para licencias y construcción.
-          </p>
-        </div>
+    <!-- ========================================================================
+         MARQUEE TICKER (Repositioned Online & USA Service Strip)
+         ======================================================================== -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-inner">
+        <span>SERVICIO 100% ONLINE <span class="mdot"></span> ENTREGAS TÉCNICAS EN TODO EE.UU. <span class="mdot"></span> MODELADO BIM & PLANOS 3D <span class="mdot"></span> PERMISOS MUNICIPALES IBC/IRC <span class="mdot"></span> DISTRIBUCIÓN ARQUITECTÓNICA <span class="mdot"></span> INSTALACIONES MEP <span class="mdot"></span> TOLERANCIA CERO COLISIONES</span>
+        <span>SERVICIO 100% ONLINE <span class="mdot"></span> ENTREGAS TÉCNICAS EN TODO EE.UU. <span class="mdot"></span> MODELADO BIM & PLANOS 3D <span class="mdot"></span> PERMISOS MUNICIPALES IBC/IRC <span class="mdot"></span> DISTRIBUCIÓN ARQUITECTÓNICA <span class="mdot"></span> INSTALACIONES MEP <span class="mdot"></span> TOLERANCIA CERO COLISIONES</span>
+      </div>
+    </div>
 
-        <div class="bento-grid">
-          <!-- Bento 1: Main Studio Description & 4 Pillars -->
-          <div class="bento-card bento-lead">
-            <span class="font-mono text-gold" style="font-size:0.8rem;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.5rem;display:block;">Filosofía y Rigor Técnico</span>
-            <h3>Planos de Construcción Especializados 100% Online</h3>
+    <!-- ========================================================================
+         NOSOTROS SECTION (Constructora García Layout + Watermark + Offset Frame)
+         ======================================================================== -->
+    <section id="nosotros">
+      <div class="ab-grid">
+        <div class="rv d1">
+          <div class="stag">Sobre ATTDIV LLC</div>
+          <h2 class="stitle">INGENIERÍA <span class="accent">ARQUITECTÓNICA</span> & MODELADO VIRTUAL</h2>
+          
+          <div class="ab-body">
             <p>
-              En <strong>ATTDIV LLC</strong> somos un estudio especializado en el <strong>diseño y elaboración de planos 3D de construcción 100% ONLINE</strong>. Desarrollamos proyectos para residencias modernas, condominios, espacios comerciales, oficinas corporativas y naves logísticas.
+              En <strong>ATTDIV LLC</strong> combinamos rigor técnico constructivo con tecnología de modelado 3D y metodología BIM para entregar planos de ejecución arquitectónica que facilitan la construcción y aceleran la obtención de permisos en todo Estados Unidos.
             </p>
             <p>
-              Más que trazar planos convencionales, diseñamos entornos tridimensionales inteligentes que fomentan la funcionalidad, optimizan procesos constructivos y eliminan errores costosos antes de iniciar obra física.
+              Trabajamos de forma 100% online y coordinada con propietarios, desarrolladores, ingenieros y contratistas generales, transformando ideas preliminares en documentación planimétrica completa y libre de colisiones.
             </p>
+          </div>
 
-            <div class="bento-pillars-list">
-              <div class="bento-pillar-item">
-                <strong>01. Estrategia 3D</strong>
-                <span>Planificación tridimensional precisa, zonificación y distribución funcional óptima.</span>
-              </div>
-              <div class="bento-pillar-item">
-                <strong>02. Equipo Experto</strong>
-                <span>Especialistas en arquitectura, ingeniería estructural, MEP y modelado BIM digital.</span>
-              </div>
-              <div class="bento-pillar-item">
-                <strong>03. Colaboración en la Nube</strong>
-                <span>Revisión de planos vía videollamada, chat continuo y visores 3D interactivos.</span>
-              </div>
-              <div class="bento-pillar-item">
-                <strong>04. Rigor Normativo</strong>
-                <span>Documentación técnica bajo códigos constructivos IBC/IRC listos para sellado oficial.</span>
-              </div>
+          <div class="ab-vals">
+            <div class="val">
+              <span class="val-ic">📐</span>
+              <div class="val-tt">Planos 3D & BIM</div>
+              <div class="val-ds">Modelado exhaustivo de arquitectura e ingeniería.</div>
+            </div>
+            <div class="val">
+              <span class="val-ic">🏛️</span>
+              <div class="val-tt">Normativa IBC/IRC</div>
+              <div class="val-ds">Compatibilidad para licencias y sellado municipal.</div>
+            </div>
+            <div class="val">
+              <span class="val-ic">🌐</span>
+              <div class="val-tt">Cobertura Total EE.UU.</div>
+              <div class="val-ds">Gestión remota ágil en los 50 estados.</div>
+            </div>
+            <div class="val">
+              <span class="val-ic">⚡</span>
+              <div class="val-tt">Tolerancia Cero</div>
+              <div class="val-ds">Detección de interferencias antes de obra.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ab-imgcol rv d2">
+          <div class="ab-imgwrap">
+            <img src="assets/img/about-blueprints.jpg" alt="Planos 3D técnicos y documentación constructiva ATTDIV LLC">
+            <div class="ab-imggrad"></div>
+          </div>
+          <div class="ab-frame"></div>
+          <div class="ab-badge">
+            <strong data-c="15">15+</strong>
+            Años de Trayectoria Técnica
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         SERVICIOS 3D (Constructora García Grid + Watermark Numbers)
+         ======================================================================== -->
+    <section id="servicios">
+      <div class="sv-hd rv d1">
+        <div>
+          <div class="stag">Nuestros Servicios 3D</div>
+          <h2 class="stitle">SOLUCIONES TÉCNICAS <span class="accent">INTEGRALES</span></h2>
+        </div>
+        <p class="sv-sub">
+          Desarrollamos proyectos planimétricos y modelos 3D que resuelven con exactitud cada detalle constructivo antes de colocar el primer ladrillo.
+        </p>
+      </div>
+
+      <div class="sv-grid">
+        <!-- Servicio 01 -->
+        <div class="sv rv d1">
+          <span class="sv-num">01</span>
+          <div class="sv-ic">
+            <svg viewBox="0 0 24 24"><path d="M3 3h18v18H3zM3 9h18M9 21V9"/></svg>
+          </div>
+          <h3 class="sv-tt">Planos de Distribución y Planificación 3D</h3>
+          <p class="sv-ds">
+            Organización técnica de espacios residenciales y comerciales optimizando circulaciones, iluminación natural, ventilación y funcionalidad operativa.
+          </p>
+          <ul class="sv-items">
+            <li>
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Plantas acotadas y zonificación funcional milimétrica.</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Cuadros de vanos, puertas y carpinterías técnicas.</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Planos de demolición y adecuación para remodelaciones.</span>
+            </li>
+          </ul>
+          <div class="sv-tags">
+            <span class="sv-tag">Plantas 3D</span>
+            <span class="sv-tag">Zonificación</span>
+            <span class="sv-tag">Cortes Técnicos</span>
+          </div>
+        </div>
+
+        <!-- Servicio 02 -->
+        <div class="sv rv d2">
+          <span class="sv-num">02</span>
+          <div class="sv-ic">
+            <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </div>
+          <h3 class="sv-tt">Diseño Conceptual & Modelado BIM 3D</h3>
+          <p class="sv-ds">
+            Modelos tridimensionales con información paramétrica que permiten visualizar volúmenes, materiales, iluminación y ensamblaje constructivo.
+          </p>
+          <ul class="sv-items">
+            <li>
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Modelado BIM completo (LOD 200 a LOD 350).</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Recorridos virtuales y perspectivas fotorrealistas.</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Detección de interferencias entre estructura y redes.</span>
+            </li>
+          </ul>
+          <div class="sv-tags">
+            <span class="sv-tag">BIM Revit</span>
+            <span class="sv-tag">Renders 4K</span>
+            <span class="sv-tag">Clash Detection</span>
+          </div>
+        </div>
+
+        <!-- Servicio 03 -->
+        <div class="sv rv d3">
+          <span class="sv-num">03</span>
+          <div class="sv-ic">
+            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          </div>
+          <h3 class="sv-tt">Gestión Técnica & Compatibilidad IBC/IRC</h3>
+          <p class="sv-ds">
+            Preparación rigurosa de sets de planos constructivos para radicación municipal y licenciamiento conforme a normativas de zonificación y seguridad en EE.UU.
+          </p>
+          <ul class="sv-items">
+            <li>
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Cumplimiento estricto de códigos IBC e IRC vigentes.</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Láminas estandarizadas listas para sellado técnico.</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Coordinación de instalaciones hidrosanitarias y eléctricas MEP.</span>
+            </li>
+          </ul>
+          <div class="sv-tags">
+            <span class="sv-tag">Building Permits</span>
+            <span class="sv-tag">IBC / IRC</span>
+            <span class="sv-tag">Plan Sets</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         SIMULADOR INTERACTIVO 3D (CAD VS RENDER 3D - Zero-Shift & Touch Safe)
+         ======================================================================== -->
+    <section id="simulador">
+      <div class="sim-hd rv d1">
+        <div class="stag">Simulador Interactivo 3D</div>
+        <h2 class="stitle">DEL PLANO CAD <span class="accent">AL RENDER 3D</span></h2>
+        <p class="sim-sub">
+          Desliza el control interactivo o utiliza los botones directos para comparar la precisión del plano técnico 2D/3D frente al acabado fotorrealista final.
+        </p>
+      </div>
+
+      <div class="sim-controls rv d2">
+        <button class="sim-btn" data-mode="cad">Plano CAD Técnico</button>
+        <button class="sim-btn active" data-mode="split">Vista Dividida 50 / 50</button>
+        <button class="sim-btn" data-mode="render">Render Fotorrealista 3D</button>
+      </div>
+
+      <div class="sim-viewport rv d3" id="simViewport" style="--sim-pos: 50%;">
+        <!-- Layer 1: Render 3D (Fondo) -->
+        <img src="assets/img/cocina-salon-comedor.jpg" alt="Render 3D Fotorrealista de Espacio Interior" class="sim-img-render">
+
+        <!-- Layer 2: CAD Blueprint (Capa Superior con clip-path) -->
+        <img src="assets/img/plano-sala-web.jpg" alt="Plano CAD Arquitectónico Técnico" class="sim-img-cad">
+
+        <!-- Deslizador Central Draggable -->
+        <div class="sim-handle" id="simHandle">
+          <div class="sim-knob" aria-label="Control deslizante">
+            <svg viewBox="0 0 24 24"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5"/></svg>
+          </div>
+        </div>
+
+        <!-- Etiquetas de Identificación Técnica -->
+        <div class="sim-label sim-label-cad">Plano CAD 2D/3D</div>
+        <div class="sim-label sim-label-render">Render 3D Fotorrealista</div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         METODOLOGÍA / PROCESO (Constructora García Step Sequence)
+         ======================================================================== -->
+    <section id="proceso">
+      <div class="stag rv d1">Metodología de Trabajo</div>
+      <h2 class="stitle rv d1">PROCESO TÉCNICO EN <span class="accent">5 PASOS</span></h2>
+
+      <div class="pr-grid">
+        <div class="rv d2">
+          <!-- Paso 1 -->
+          <div class="pr-step">
+            <span class="pr-n">01</span>
+            <div>
+              <h3 class="pr-tt">Consulta Inicial & Requerimientos</h3>
+              <p class="pr-ds">
+                Recepción de croquis, bocetos preliminares, medidas en sitio, estudios topográficos y normativas locales aplicables en tu jurisdicción de EE.UU.
+              </p>
             </div>
           </div>
 
-          <!-- Bento 2: Authentic Blueprint Showcase Visual -->
-          <div class="bento-card" style="justify-content:space-between;">
+          <!-- Paso 2 -->
+          <div class="pr-step">
+            <span class="pr-n">02</span>
             <div>
-              <div class="bento-blueprint-visual">
-                <img src="assets/img/about-blueprints.jpg" alt="Mesa técnica de planos y elevaciones arquitectónicas">
-              </div>
-              <span class="font-mono text-gold" style="font-size:0.75rem;text-transform:uppercase;letter-spacing:0.05em;display:block;margin-bottom:0.4rem;">Garantía de Calidad Técnica</span>
-              <h4 style="font-size:1.25rem;margin-bottom:0.6rem;">Acompañamiento Continuo</h4>
-              <p style="font-size:0.88rem;color:#ad9c8e;line-height:1.6;">
-                Cada lámina técnica incluye memorias descriptivas, detalles constructivos milimétricos y asistencia remota para resolver dudas técnicas con contratistas en obra.
+              <h3 class="pr-tt">Modelado Conceptual y Espacial 3D</h3>
+              <p class="pr-ds">
+                Generación del modelo volumétrico tridimensional para evaluar proporciones, distribución de ambientes, vanos de iluminación y accesos.
               </p>
             </div>
-            <div style="margin-top:1.5rem;padding-top:1.2rem;border-top:1px solid var(--border-subtle);">
-              <a href="mailto:admin@attdiv.com?subject=Consulta%20Estudio%20ATTDIV%20LLC" class="btn btn-secondary" style="width:100%;">
-                <span>Contactar con un Especialista</span>
-              </a>
+          </div>
+
+          <!-- Paso 3 -->
+          <div class="pr-step">
+            <span class="pr-n">03</span>
+            <div>
+              <h3 class="pr-tt">Desarrollo de Planos Constructivos</h3>
+              <p class="pr-ds">
+                Elaboración rigurosa de plantas acotadas, cortes longitudinales, fachadas, detalles constructivos y coordinación de instalaciones MEP.
+              </p>
+            </div>
+          </div>
+
+          <!-- Paso 4 -->
+          <div class="pr-step">
+            <span class="pr-n">04</span>
+            <div>
+              <h3 class="pr-tt">Visualización Fotorrealista</h3>
+              <p class="pr-ds">
+                Renders de alta definición con aplicación de materiales, texturas, iluminación solar real y perspectivas interiores para validación total.
+              </p>
+            </div>
+          </div>
+
+          <!-- Paso 5 -->
+          <div class="pr-step">
+            <span class="pr-n">05</span>
+            <div>
+              <h3 class="pr-tt">Entrega Técnica Final Llave en Mano</h3>
+              <p class="pr-ds">
+                Suministro de la documentación completa en formatos estándar de la industria (PDF de alta resolución, DWG AutoCAD y modelos BIM).
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="pr-imgcol rv d3">
+          <div class="pr-imgwrap">
+            <img src="assets/img/step3-permits.jpg" alt="Planos de arquitectura técnica aprobados ATTDIV LLC">
+            <div class="pr-imgbadge">
+              <span>Garantía de Calidad Técnica</span>
+              <strong>Documentación 100% Coordinada</strong>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ==========================================================================
-         SERVICES SECTION (Stacked Technical Decks)
-         ========================================================================== -->
-    <section class="services-section" id="servicios">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-pill"><span class="pulse-dot"></span> NUESTRAS ESPECIALIDADES</span>
-          <h2 class="section-title">Servicios Integrales de Planos 3D Online</h2>
-          <p class="section-subtitle">
-            Paquetes técnicos ejecutivos completos con archivos editables (DWG, RVT, IFC) y láminas PDF vectoriales a escala.
-          </p>
+    <!-- ========================================================================
+         PORTAFOLIO DE PROYECTOS (Constructora García 12-Column Layout)
+         ======================================================================== -->
+    <section id="proyectos">
+      <div class="pj-hd rv d1">
+        <div>
+          <div class="stag">Portafolio de Proyectos</div>
+          <h2 class="stitle">MODELADO 3D & <span class="accent">PLANOS TÉCNICOS</span></h2>
+        </div>
+        <p class="sv-sub">
+          Explora algunos de nuestros proyectos de arquitectura, modelado BIM y planimetría constructiva desarrollados para clientes en EE.UU.
+        </p>
+      </div>
+
+      <div class="pj-grid rv d2">
+        <!-- Proyecto 1: Big Feature -->
+        <div class="pj">
+          <img src="assets/img/port-canada.jpg" alt="Residencia La Cañada - Planos 3D y Distribución">
+          <div class="pj-ov">
+            <div>
+              <span class="pj-cat">Residencial Contemporáneo</span>
+              <div class="pj-nm">Residencia La Cañada • Planos 3D</div>
+            </div>
+          </div>
         </div>
 
-        <div class="services-stack">
-          <!-- Service Deck 1 -->
-          <div class="service-deck-card">
-            <div class="service-deck-media">
-              <img src="assets/img/service-dist.jpg" alt="Planos 3D Integrales Llave en Mano">
-            </div>
-            <div class="service-deck-content">
-              <div class="service-deck-header">
-                <span class="font-mono text-gold" style="font-size:0.75rem;text-transform:uppercase;">ESPECIALIDAD 01</span>
-                <h3 class="service-deck-title">Planos 3D Integrales y Proyectos Llave en Mano</h3>
-                <p class="service-deck-desc">
-                  Desarrollo técnico exhaustivo desde la cimentación hasta los acabados finales, brindando una solución confiable y precisa para contratistas y propietarios en todo EE.UU.
-                </p>
-              </div>
-
-              <div class="service-checklist-grid">
-                <div class="check-item">
-                  <span class="check-icon">✓</span>
-                  <span>Planos de instalaciones eléctricas, sanitarias y plomería 100% ONLINE.</span>
-                </div>
-                <div class="check-item">
-                  <span class="check-icon">✓</span>
-                  <span>Planos de detalle de carpintería, herrería y amoblamiento 3D.</span>
-                </div>
-                <div class="check-item">
-                  <span class="check-icon">✓</span>
-                  <span>Planos de distribución y detalles de muros de tablayeso / drywall a gran escala.</span>
-                </div>
-                <div class="check-item">
-                  <span class="check-icon">✓</span>
-                  <span>Especificación técnica de revestimientos, pisos y azulejos.</span>
-                </div>
-              </div>
-
-              <div>
-                <a href="mailto:admin@attdiv.com?subject=Consulta%20Planos%20Integrales%20Llave%20en%20Mano" class="btn btn-primary btn-block-mobile">
-                  <span>Consultar Paquete Llave en Mano</span>
-                </a>
-              </div>
+        <!-- Proyecto 2: Portrait -->
+        <div class="pj">
+          <img src="assets/img/port-sacramento.jpg" alt="Complejo Residencial Sacramento - Modelado BIM">
+          <div class="pj-ov">
+            <div>
+              <span class="pj-cat">Modelado BIM & MEP</span>
+              <div class="pj-nm">Complejo Sacramento</div>
             </div>
           </div>
+        </div>
 
-          <!-- Service Deck 2 -->
-          <div class="service-deck-card">
-            <div class="service-deck-media">
-              <img src="assets/img/service-concept.jpg" alt="Diseño y Conceptualización 3D Arquitectónica">
-            </div>
-            <div class="service-deck-content">
-              <div class="service-deck-header">
-                <span class="font-mono text-gold" style="font-size:0.75rem;text-transform:uppercase;">ESPECIALIDAD 02</span>
-                <h3 class="service-deck-title">Diseño y Conceptualización 3D Arquitectónica</h3>
-                <p class="service-deck-desc">
-                  Materializamos la visión del cliente mediante representaciones tridimensionales envolventes, definiendo con total claridad estética, iluminación, materiales y volumetría espacial.
-                </p>
-              </div>
-
-              <div class="service-checklist-grid">
-                <div class="check-item">
-                  <span class="check-icon">✓</span>
-                  <span>Moodboard digital 100% ONLINE con texturas y materiales reales.</span>
-                </div>
-                <div class="check-item">
-                  <span class="check-icon">✓</span>
-                  <span>Estudios de asoleamiento e iluminación natural y artificial.</span>
-                </div>
-                <div class="check-item">
-                  <span class="check-icon">✓</span>
-                  <span>Renderizados 3D fotorrealistas y recorridos virtuales 360°.</span>
-                </div>
-                <div class="check-item">
-                  <span class="check-icon">✓</span>
-                  <span>Optimizaciones y ajustes ilimitados en línea para tu satisfacción.</span>
-                </div>
-              </div>
-
-              <div>
-                <a href="mailto:admin@attdiv.com?subject=Consulta%20Conceptualizacion%203D" class="btn btn-primary btn-block-mobile">
-                  <span>Consultar Diseño y Conceptualización</span>
-                </a>
-              </div>
+        <!-- Proyecto 3: Grid bottom 1 -->
+        <div class="pj">
+          <img src="assets/img/port-loft.jpg" alt="Loft Industrial Urbano - Planos de Acabados">
+          <div class="pj-ov">
+            <div>
+              <span class="pj-cat">Diseño de Espacios</span>
+              <div class="pj-nm">Loft Industrial Urbano</div>
             </div>
           </div>
+        </div>
 
-          <!-- Service Deck 3 -->
-          <div class="service-deck-card">
-            <div class="service-deck-media">
-              <img src="assets/img/service-mep.jpg" alt="Planos de Instalaciones MEP y Redes Técnicas en 3D">
+        <!-- Proyecto 4: Grid bottom 2 -->
+        <div class="pj">
+          <img src="assets/img/port-campo.jpg" alt="Villa Campestre - Planimetría Integral">
+          <div class="pj-ov">
+            <div>
+              <span class="pj-cat">Arquitectura Campestre</span>
+              <div class="pj-nm">Villa Campestre 3D</div>
             </div>
-            <div class="service-deck-content">
-              <div class="service-deck-header">
-                <span class="font-mono text-gold" style="font-size:0.75rem;text-transform:uppercase;">ESPECIALIDAD 03</span>
-                <h3 class="service-deck-title">Planos de Instalaciones MEP y Redes Técnicas en 3D</h3>
-                <p class="service-deck-desc">
-                  Modelado tridimensional y cálculo de redes eléctricas, mecánicas (HVAC), sanitarias y contra incendios, eliminando colisiones con la estructura antes de la obra.
-                </p>
-              </div>
+          </div>
+        </div>
 
-              <div class="service-checklist-grid">
-                <div class="check-item">
-                  <span class="check-icon">✓</span>
-                  <span>Ductos de climatización HVAC y tableros en volumetría 3D.</span>
-                </div>
-                <div class="check-item">
-                  <span class="check-icon">✓</span>
-                  <span>Pendientes controladas y bajantes sanitarias sin interferencias.</span>
-                </div>
-                <div class="check-item">
-                  <span class="check-icon">✓</span>
-                  <span>Láminas técnicas ejecutivas para instaladores y subcontratistas.</span>
-                </div>
-                <div class="check-item">
-                  <span class="check-icon">✓</span>
-                  <span>Coordinación BIM integral con estructura metálica y concreto.</span>
-                </div>
-              </div>
-
-              <div>
-                <a href="mailto:admin@attdiv.com?subject=Consulta%20Planos%20MEP%203D" class="btn btn-primary btn-block-mobile">
-                  <span>Consultar Planos MEP 3D</span>
-                </a>
-              </div>
+        <!-- Proyecto 5: Grid bottom 3 -->
+        <div class="pj">
+          <img src="assets/img/port-penthouse.jpg" alt="Penthouse Panorámico - Renders y Licencias">
+          <div class="pj-ov">
+            <div>
+              <span class="pj-cat">Renders & Permisos</span>
+              <div class="pj-nm">Penthouse Panorámico</div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ==========================================================================
-         SIMULADOR INTERACTIVO 3D (STRICT: Original Comparison Images Preserved)
-         ========================================================================== -->
-    <section class="simulator-section" id="simulador">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-pill"><span class="pulse-dot"></span> VISOR TÉCNICO INTERACTIVO</span>
-          <h2 class="section-title">Simulador Interactivo: De Plano 3D a Realidad</h2>
-          <p class="section-subtitle">
-            Desliza el separador horizontalmente para ver la correlación exacta entre el plano CAD 3D y el render final fotorrealista. Haz clic en los puntos numerados para consultar especificaciones.
+    <!-- ========================================================================
+         VISIÓN & GARANTÍA TÉCNICA (Glassmorphism Cards over Blueprint)
+         ======================================================================== -->
+    <section id="mision">
+      <div class="rv d1">
+        <div class="stag">Garantía Profesional</div>
+        <h2 class="stitle">PRECISIÓN DIGITAL AL SERVICIO DE <span class="accent">LA CONSTRUCCIÓN</span></h2>
+      </div>
+
+      <div class="vm-grid rv d2">
+        <div class="vm">
+          <span class="vm-lb">Rigor Normativo & Permisos</span>
+          <p class="vm-tx">
+            "Diseñamos cada lámina conforme a los códigos técnicos IBC, IRC y directrices locales de zonificación en EE.UU., minimizando observaciones y retrasos en los trámites municipales."
           </p>
         </div>
 
-        <div class="simulator-box">
-          <div class="sim-top-bar">
-            <div>
-              <h3 style="font-size:1.15rem;margin-bottom:0.2rem;">Plano CAD 3D vs. Render Arquitectónico</h3>
-              <span class="font-mono text-muted" style="font-size:0.78rem;">Residencia Contemporánea • Sala Integrada • Escala 1:50</span>
-            </div>
-            <div class="sim-controls">
-              <button type="button" class="sim-btn" data-mode="blueprint">Plano CAD</button>
-              <button type="button" class="sim-btn active" data-mode="split">Vista 50/50</button>
-              <button type="button" class="sim-btn" data-mode="render">Render 3D</button>
-            </div>
-          </div>
-
-          <!-- Comparison Viewer with strict touch containment -->
-          <div class="comparison-viewer">
-            <!-- Background Layer: Blueprint CAD (Preserved) -->
-            <div class="comparison-layer comparison-blueprint">
-              <img src="assets/img/plano-sala-web.jpg" alt="Plano 3D CAD Técnico Sala">
-              <!-- Interactive Hotspots -->
-              <div class="hotspot-pin" style="top:25%;left:20%;" data-title="Muros Estructurales y Tabiques" data-desc="Modulación milimétrica de tablayeso y perfiles galvanizados calculados para aislamiento acústico y resistencia sísmica.">1</div>
-              <div class="hotspot-pin" style="top:45%;left:55%;" data-title="Instalaciones MEP Ocultas" data-desc="Trazado 3D de canalizaciones eléctricas y red hidrosanitaria con pendientes controladas y cajas de registro registrables.">2</div>
-              <div class="hotspot-pin" style="top:70%;left:75%;" data-title="Cielo Falso e Iluminación" data-desc="Planos de modulación de falso plafón con luces LED indirectas y rejillas de climatización integradas.">3</div>
-              <div class="hotspot-pin" style="top:55%;left:35%;" data-title="Acabados y Carpintería 3D" data-desc="Despiece de mobiliario integrado a medida, carpintería técnica e islas de cocina con tolerancia cero colisiones.">4</div>
-            </div>
-
-            <!-- Foreground Layer: Photorealistic 3D Render (Preserved) -->
-            <div class="comparison-layer comparison-render">
-              <img src="assets/img/cocina-salon-comedor.jpg" alt="Render Arquitectónico 3D">
-            </div>
-
-            <!-- Draggable Divider Handle -->
-            <div class="comparison-divider">
-              <div class="comparison-handle" aria-label="Deslizar comparador">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
-              </div>
-            </div>
-          </div>
-
-          <!-- Hotspots Grid below viewer -->
-          <div class="sim-hotspots-grid">
-            <div class="sim-hotspot-card active" data-pin="1">
-              <span class="sim-hotspot-num">1</span>
-              <h4>Muros & Tabiques</h4>
-              <p>Modulación de tablayeso y perfiles con aislamiento acústico.</p>
-            </div>
-            <div class="sim-hotspot-card" data-pin="2">
-              <span class="sim-hotspot-num">2</span>
-              <h4>Instalaciones MEP</h4>
-              <p>Canalizaciones eléctricas e hidrosanitarias 3D con pendientes.</p>
-            </div>
-            <div class="sim-hotspot-card" data-pin="3">
-              <span class="sim-hotspot-num">3</span>
-              <h4>Cielo Falso LED</h4>
-              <p>Falsos plafones con iluminación indirecta y ductos HVAC.</p>
-            </div>
-            <div class="sim-hotspot-card" data-pin="4">
-              <span class="sim-hotspot-num">4</span>
-              <h4>Carpintería Fina</h4>
-              <p>Mobiliario a medida, barras de cocina y despieces exactos.</p>
-            </div>
-          </div>
+        <div class="vm">
+          <span class="vm-lb">Coordinación 3D Tolerancia Cero</span>
+          <p class="vm-tx">
+            "La integración tridimensional y la metodología BIM permiten detectar colisiones entre estructuras e instalaciones antes del inicio de obra, ahorrando costos imprevistos a constructores y clientes."
+          </p>
         </div>
       </div>
     </section>
 
-    <!-- ==========================================================================
-         METHODOLOGY (5 Connected Steps, Mobile-First)
-         ========================================================================== -->
-    <section class="methodology-section" id="metodologia">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-pill"><span class="pulse-dot"></span> PROCESO ONLINE</span>
-          <h2 class="section-title">Metodología de Trabajo 100% Online</h2>
-          <p class="section-subtitle">
-            Un flujo transparente y eficiente sin desplazamientos innecesarios. Control total de cada etapa desde cualquier ciudad de Estados Unidos.
-          </p>
-        </div>
-
-        <div class="method-cards-list">
-          <!-- Step 1 -->
-          <div class="method-card">
-            <div>
-              <div class="method-step-header">
-                <span class="method-num-tag">01</span>
-                <h3>Asesoría y Recepción de Información Online</h3>
-              </div>
-              <p>
-                Recibimos tus requerimientos, medidas, fotos del terreno, planos preliminares o bocetos a mano 100% online vía videollamada o correo. Definimos el programa de necesidades, orientación y presupuesto objetivo.
-              </p>
-              <div class="method-checks font-mono" style="font-size:0.8rem;color:#c7b199;">
-                <div>✓ Recepción de medidas, levantamientos y bocetos digitales.</div>
-                <div>✓ Definición de programa arquitectónico y presupuesto objetivo.</div>
-              </div>
-            </div>
-            <div class="method-thumb">
-              <img src="assets/img/step1-consultation.jpg" alt="Recepción de medidas y levantamiento CAD">
-            </div>
-          </div>
-
-          <!-- Step 2 -->
-          <div class="method-card">
-            <div>
-              <div class="method-step-header">
-                <span class="method-num-tag">02</span>
-                <h3>Diseño del Proyecto y Modelado 3D Preliminar</h3>
-              </div>
-              <p>
-                Desarrollamos los primeros esquemas volumétricos en 3D, plantas arquitectónicas acotadas y estimación técnica. Creamos el moodboard digital con especificaciones de materiales y texturas reales.
-              </p>
-              <div class="method-checks font-mono" style="font-size:0.8rem;color:#c7b199;">
-                <div>✓ Modelado 3D inicial y plantas arquitectónicas acotadas.</div>
-                <div>✓ Moodboard de acabados, revestimientos y paleta cromática.</div>
-              </div>
-            </div>
-            <div class="method-thumb">
-              <img src="assets/img/step2-modeling.jpg" alt="Modelado tridimensional y arquitectura CAD">
-            </div>
-          </div>
-
-          <!-- Step 3 -->
-          <div class="method-card">
-            <div>
-              <div class="method-step-header">
-                <span class="method-num-tag">03</span>
-                <h3>Gestión Técnica y Compatibilidad para Permisos</h3>
-              </div>
-              <p>
-                Elaboración de planos constructivos para permisos municipales y radicación oficial bajo códigos vigentes (IBC, IRC, normativas locales de zonificación, seguridad sísmica y contra incendios).
-              </p>
-              <div class="method-checks font-mono" style="font-size:0.8rem;color:#c7b199;">
-                <div>✓ Cumplimiento de códigos constructivos y licencias de edificación.</div>
-                <div>✓ Láminas normalizadas listas para sellado y aprobación técnica.</div>
-              </div>
-            </div>
-            <div class="method-thumb">
-              <img src="assets/img/step3-permits.jpg" alt="Láminas oficiales para permisos y códigos IBC/IRC">
-            </div>
-          </div>
-
-          <!-- Step 4 -->
-          <div class="method-card">
-            <div>
-              <div class="method-step-header">
-                <span class="method-num-tag">04</span>
-                <h3>Modelado BIM, Renderizado 3D y Simulaciones</h3>
-              </div>
-              <p>
-                Creación de representaciones visuales hiperrealistas del proyecto, cortes 3D axonométricos, vistas interiores/exteriores y simulaciones para una toma de decisiones 100% informada antes de construir.
-              </p>
-              <div class="method-checks font-mono" style="font-size:0.8rem;color:#c7b199;">
-                <div>✓ Renders fotorrealistas en alta resolución 4K.</div>
-                <div>✓ Recorridos interactivos 360° para visualización inmersiva.</div>
-              </div>
-            </div>
-            <div class="method-thumb">
-              <img src="assets/img/step4-renders.jpg" alt="Cortes axonométricos y renders arquitectónicos 3D">
-            </div>
-          </div>
-
-          <!-- Step 5 -->
-          <div class="method-card">
-            <div>
-              <div class="method-step-header">
-                <span class="method-num-tag">05</span>
-                <h3>Entrega 100% Digital y Supervisión Técnica Online</h3>
-              </div>
-              <p>
-                Entrega de la carpeta ejecutiva completa en formatos estándar (PDF vectoriales a escala, DWG nativos de AutoCAD, archivos Revit/IFC y visor 3D web). Acompañamiento online continuo durante obra.
-              </p>
-              <div class="method-checks font-mono" style="font-size:0.8rem;color:#c7b199;">
-                <div>✓ Descarga inmediata en la nube de planos DWG, RVT, IFC y PDF.</div>
-                <div>✓ Asistencia y dirección técnica remota durante la construcción.</div>
-              </div>
-            </div>
-            <div class="method-thumb">
-              <img src="assets/img/step5-delivery.jpg" alt="Entrega digital de planos 3D certificados">
-            </div>
-          </div>
-        </div>
+    <!-- ========================================================================
+         CONTACTO & FORMULARIO DIRECTO
+         ======================================================================== -->
+    <section id="contacto">
+      <div class="rv d1">
+        <div class="stag">Atención Directa & Presupuestos</div>
+        <h2 class="stitle">INICIA TU PROYECTO <span class="accent">CON NOSOTROS</span></h2>
       </div>
-    </section>
 
-    <!-- ==========================================================================
-         PORTFOLIO (Proyectos Desarrollados en 3D)
-         ========================================================================== -->
-    <section class="portfolio-section" id="portafolio">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-pill"><span class="pulse-dot"></span> CASOS DE ÉXITO EN EE.UU.</span>
-          <h2 class="section-title">Proyectos Desarrollados en 3D</h2>
-          <p class="section-subtitle">
-            Explora nuestros desarrollos de planos 3D 100% online para residencias modernas de lujo, viviendas unifamiliares, casas de descanso y proyectos comerciales.
-          </p>
-        </div>
-
-        <div class="portfolio-grid">
-          <!-- Project 1 -->
-          <div class="project-card" data-title="Residencia Moderna: La Cañada" data-desc="Planos 3D arquitectónicos y despieces técnicos de tablayeso para residencia de lujo contemporánea con piscina y terrazas." data-specs="Área: 3,800 sq ft • Formato: Revit BIM + DWG + PDF • Entrega 100% Online">
-            <div class="project-media-box">
-              <img src="assets/img/port-canada.jpg" alt="Planos 3D Residencia Moderna La Cañada">
-              <span class="project-tag">Residencial 3D</span>
+      <div class="ct-grid">
+        <div class="ct-info rv d2">
+          <div class="ct-item">
+            <div class="ct-icon">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
             </div>
-            <div class="project-body">
-              <div>
-                <h3 class="project-title">Residencia Moderna: La Cañada</h3>
-                <p class="project-desc">Planos 3D de arquitectura residencial, divisiones de tablayeso y acabados interiores de lujo.</p>
-              </div>
-              <div class="project-specs-line">
-                <span>3,800 sq ft</span>
-                <span class="text-gold">Ver Detalles →</span>
-              </div>
+            <div>
+              <span class="ct-lb">Correo Electrónico Oficial</span>
+              <div class="ct-vl"><a href="mailto:admin@attdiv.com">admin@attdiv.com</a></div>
             </div>
           </div>
 
-          <!-- Project 2 -->
-          <div class="project-card" data-title="Estructura Metálica: Residencias de Descanso" data-desc="Planos 3D estructurales metálicos y diseño arquitectónico 3D para residencia de descanso contemporánea." data-specs="Área: 2,900 sq ft • Formato: AutoCAD 3D + Tekla • Entrega 100% Online">
-            <div class="project-media-box">
-              <img src="assets/img/port-descanso.jpg" alt="Planos 3D Estructura Metálica Residencias de Descanso">
-              <span class="project-tag">Estructura & Acero</span>
+          <div class="ct-item">
+            <div class="ct-icon">
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
             </div>
-            <div class="project-body">
-              <div>
-                <h3 class="project-title">Residencias de Descanso</h3>
-                <p class="project-desc">Planos 3D estructurales en acero, modulación técnica y envolventes térmicas para descanso.</p>
-              </div>
-              <div class="project-specs-line">
-                <span>2,900 sq ft</span>
-                <span class="text-gold">Ver Detalles →</span>
-              </div>
+            <div>
+              <span class="ct-lb">Dirección Corporativa</span>
+              <div class="ct-vl">8206 Louisiana Blvd NE, Ste A #11163<br>Albuquerque, Nuevo México 87113, EE.UU.</div>
             </div>
           </div>
 
-          <!-- Project 3 -->
-          <div class="project-card" data-title="Residencia Contemporánea: Sacramento, CA" data-desc="Planos 3D integrales para residencia unifamiliar moderna de dos niveles en Sacramento, CA." data-specs="Área: 4,200 sq ft • Formato: Revit BIM + DWG • Entrega 100% Online">
-            <div class="project-media-box">
-              <img src="assets/img/port-sacramento.jpg" alt="Planos 3D Residencia Contemporánea Sacramento">
-              <span class="project-tag">BIM Integral</span>
+          <div class="ct-item">
+            <div class="ct-icon">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
             </div>
-            <div class="project-body">
-              <div>
-                <h3 class="project-title">Residencia Sacramento, CA</h3>
-                <p class="project-desc">Planimetría 3D integral, diseño de volumetría moderna, terrazas y acabados exteriores.</p>
-              </div>
-              <div class="project-specs-line">
-                <span>4,200 sq ft</span>
-                <span class="text-gold">Ver Detalles →</span>
-              </div>
+            <div>
+              <span class="ct-lb">Horario de Operación</span>
+              <div class="ct-vl">Lunes a Viernes: 8:00 AM - 17:00 PM PST<br>Respuesta técnica garantizada en menos de 24 horas.</div>
             </div>
           </div>
 
-          <!-- Project 4 -->
-          <div class="project-card" data-title="Loft Urbano y Espacios Abiertos" data-desc="Planos 3D de distribución interior, modulación de tablayeso para loft y cocina abierta, iluminación técnica." data-specs="Área: 2,400 sq ft • Formato: AutoCAD 3D + SketchUp • Entrega 100% Online">
-            <div class="project-media-box">
-              <img src="assets/img/port-loft.jpg" alt="Planos 3D Loft Urbano y Espacios Abiertos">
-              <span class="project-tag">Interiorismo 3D</span>
+          <div class="ct-item">
+            <div class="ct-icon">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
             </div>
-            <div class="project-body">
-              <div>
-                <h3 class="project-title">Loft Urbano & Espacios Abiertos</h3>
-                <p class="project-desc">Planos de modulación de cielo falso, iluminación técnica, tabiquería y carpintería fina.</p>
-              </div>
-              <div class="project-specs-line">
-                <span>2,400 sq ft</span>
-                <span class="text-gold">Ver Detalles →</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 5 -->
-          <div class="project-card" data-title="Villa de Campo y Terrazas" data-desc="Planos 3D de volumetría moderna y fachadas con pérgolas metálicas, recubrimientos en piedra y grandes ventanales." data-specs="Área: 3,100 sq ft • Formato: Revit BIM + Lumion • Entrega 100% Online">
-            <div class="project-media-box">
-              <img src="assets/img/port-campo.jpg" alt="Planos 3D Villa de Campo y Terrazas">
-              <span class="project-tag">Campestre & Terrazas</span>
-            </div>
-            <div class="project-body">
-              <div>
-                <h3 class="project-title">Villa de Campo y Terrazas</h3>
-                <p class="project-desc">Planos 3D arquitectónicos para vivienda campestre, volumetría, pérgolas y decks.</p>
-              </div>
-              <div class="project-specs-line">
-                <span>3,100 sq ft</span>
-                <span class="text-gold">Ver Detalles →</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 6 -->
-          <div class="project-card" data-title="Penthouse y Condominios Residenciales" data-desc="Planos 3D de distribución habitacional y tablayeso para penthouse de lujo con aislamiento acústico." data-specs="Área: 3,500 sq ft • Formato: Revit BIM • Entrega 100% Online">
-            <div class="project-media-box">
-              <img src="assets/img/port-penthouse.jpg" alt="Planos 3D Penthouse y Condominio Residencial">
-              <span class="project-tag">Condominio & Penthouse</span>
-            </div>
-            <div class="project-body">
-              <div>
-                <h3 class="project-title">Penthouse & Condominios</h3>
-                <p class="project-desc">Planos 3D de tabiquería liviana, insonorización acústica y acabados de lujo para apartamentos.</p>
-              </div>
-              <div class="project-specs-line">
-                <span>3,500 sq ft</span>
-                <span class="text-gold">Ver Detalles →</span>
-              </div>
+            <div>
+              <span class="ct-lb">Modalidad de Servicio</span>
+              <div class="ct-vl">100% Online • Cobertura en los 50 Estados de EE.UU.</div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- ==========================================================================
-         CONTACT SECTION (Frictionless, Mobile-First)
-         ========================================================================== -->
-    <section class="contact-section" id="contacto">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-pill"><span class="pulse-dot"></span> CONTACTO DIRECTO</span>
-          <h2 class="section-title">Inicia tu Proyecto 3D con ATTDIV LLC</h2>
-          <p class="section-subtitle">
-            ¿Tienes un boceto a mano, un proyecto nuevo o una remodelación? Envíanos tus requerimientos y nuestro equipo te responderá en menos de 24 horas con una propuesta técnica y cronograma.
-          </p>
-        </div>
-
-        <div class="contact-layout">
-          <!-- Contact Cards -->
-          <div class="contact-info-deck">
-            <div class="contact-box-item">
-              <div class="contact-box-icon">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+        <div class="rv d3">
+          <form class="ct-form" id="contactForm">
+            <div class="fg-row">
+              <div class="fg">
+                <label for="fname">Nombre Completo *</label>
+                <input type="text" id="fname" required placeholder="Ej: John Smith">
               </div>
-              <div>
-                <div class="contact-label">Correo Electrónico Oficial</div>
-                <div class="contact-val">
-                  <a href="mailto:admin@attdiv.com" class="text-gold">admin@attdiv.com</a>
-                </div>
+              <div class="fg">
+                <label for="femail">Correo Electrónico *</label>
+                <input type="email" id="femail" required placeholder="tu@empresa.com">
               </div>
             </div>
 
-            <div class="contact-box-item">
-              <div class="contact-box-icon">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <div class="fg-row">
+              <div class="fg">
+                <label for="fphone">Teléfono / WhatsApp</label>
+                <input type="tel" id="fphone" placeholder="+1 (555) 000-0000">
               </div>
-              <div>
-                <div class="contact-label">Dirección Corporativa</div>
-                <div class="contact-val">8206 Louisiana Blvd NE, Ste A #11163, Albuquerque, Nuevo México 87113</div>
-              </div>
-            </div>
-
-            <div class="contact-box-item">
-              <div class="contact-box-icon">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-              </div>
-              <div>
-                <div class="contact-label">Horario de Atención</div>
-                <div class="contact-val">Lunes a Viernes: 8:00 AM – 17:00 PM PST</div>
+              <div class="fg">
+                <label for="ftype">Tipo de Proyecto *</label>
+                <select id="ftype">
+                  <option value="Planos 3D y Distribución">Planos 3D y Distribución</option>
+                  <option value="Modelado BIM y Renders">Modelado BIM y Renders 3D</option>
+                  <option value="Planos para Permisos Municipales">Planos para Permisos Municipales (IBC/IRC)</option>
+                  <option value="Adecuación o Remodelación">Remodelación o Ampliación</option>
+                </select>
               </div>
             </div>
-          </div>
 
-          <!-- Contact Form Card -->
-          <div class="contact-form-card">
-            <h3 style="font-size:1.35rem;margin-bottom:0.4rem;">Solicitar Cotización de Planos 3D</h3>
-            <p style="font-size:0.86rem;color:#ad9c8e;margin-bottom:1.5rem;">Diligencia este formulario y nuestro equipo técnico se comunicará contigo.</p>
-            
-            <form id="quoteContactForm">
-              <div class="form-grid-2">
-                <div class="form-field">
-                  <label for="fName" class="form-label">Nombre Completo *</label>
-                  <input type="text" id="fName" name="name" class="form-input" placeholder="Tu nombre o empresa" required>
-                </div>
-                <div class="form-field">
-                  <label for="fEmail" class="form-label">Correo Electrónico *</label>
-                  <input type="email" id="fEmail" name="email" class="form-input" placeholder="correo@ejemplo.com" required>
-                </div>
-              </div>
+            <div class="fg">
+              <label for="fmsg">Detalles de la Solicitud *</label>
+              <textarea id="fmsg" required placeholder="Describe las dimensiones, estado actual y requerimientos de tu proyecto..."></textarea>
+            </div>
 
-              <div class="form-grid-2">
-                <div class="form-field">
-                  <label for="fType" class="form-label">Tipo de Proyecto *</label>
-                  <select id="fType" name="project_type" class="form-select" required>
-                    <option value="" disabled selected>Selecciona una opción</option>
-                    <option value="Residencial 3D">Residencial 3D (Unifamiliar, Villa)</option>
-                    <option value="Comercial / Oficinas">Comercial / Retail / Oficinas</option>
-                    <option value="Planos MEP e Instalaciones">Planos MEP e Instalaciones</option>
-                    <option value="Modelado BIM Completo">Modelado BIM Integral Llave en Mano</option>
-                  </select>
-                </div>
-                <div class="form-field">
-                  <label for="fArea" class="form-label">Superficie Estimada (sq ft / m²)</label>
-                  <input type="text" id="fArea" name="area" class="form-input" placeholder="Ej: 3,000 sq ft">
-                </div>
-              </div>
-
-              <div class="form-field">
-                <label for="fMsg" class="form-label">Detalles del Proyecto *</label>
-                <textarea id="fMsg" name="message" class="form-textarea" placeholder="Describe brevemente tus requerimientos, medidas o dudas..." required></textarea>
-              </div>
-
-              <button type="submit" class="btn btn-primary" style="width:100%;margin-top:0.4rem;">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
-                <span>Enviar Solicitud por Correo</span>
-              </button>
-            </form>
-          </div>
+            <button type="submit" class="btn-sub">Enviar Solicitud de Planos</button>
+            <p class="f-note">Tus datos técnicos se tratan bajo estricta confidencialidad profesional.</p>
+          </form>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- ==========================================================================
+  <!-- ========================================================================
        FOOTER
-       ========================================================================== -->
-  <footer class="footer">
-    <div class="container footer-grid">
-      <div class="footer-brand">
-        <a href="index.html" class="logo-brand">
-          <img src="assets/img/logo-horizontal-light.png" alt="ATTDIV LLC" class="logo-img" style="height:44px;">
+       ======================================================================== -->
+  <footer>
+    <div class="ft-grid">
+      <div>
+        <a href="#hero" class="ft-logo">
+          <img src="assets/img/logo-horizontal-light.png" alt="ATTDIV LLC">
         </a>
-        <p>
-          Estudio especializado en el diseño y elaboración de planos 3D de construcción 100% ONLINE para contratistas y propietarios en todo Estados Unidos.
+        <p class="ft-tg">
+          Especialistas en desarrollo de planos constructivos 3D, modelado BIM y soporte técnico para proyectos arquitectónicos en todo EE.UU.
         </p>
-        <span class="font-mono text-muted" style="font-size:0.75rem;">ATTDIV LLC • Albuquerque, NM 87113</span>
       </div>
 
-      <div class="footer-col">
-        <h4>Navegación</h4>
-        <div class="footer-links-list">
-          <a href="#inicio">Inicio</a>
-          <a href="#estudio">Quiénes Somos</a>
-          <a href="#servicios">Servicios 3D</a>
-          <a href="#simulador">Simulador 3D</a>
-          <a href="#metodologia">Metodología</a>
-          <a href="#portafolio">Proyectos</a>
-          <a href="#contacto">Contacto</a>
-        </div>
-      </div>
-
-      <div class="footer-col">
+      <div class="ft-col">
         <h4>Servicios 3D</h4>
-        <div class="footer-links-list">
-          <a href="#servicios">Planos 3D Llave en Mano</a>
-          <a href="#servicios">Diseño y Conceptualización</a>
-          <a href="#servicios">Instalaciones MEP 3D</a>
-          <a href="#servicios">Modelado BIM y Detección</a>
-        </div>
+        <ul>
+          <li><a href="#servicios">Planos de Distribución</a></li>
+          <li><a href="#servicios">Modelado BIM 3D</a></li>
+          <li><a href="#servicios">Permisos Municipales</a></li>
+          <li><a href="#simulador">Simulador CAD vs 3D</a></li>
+        </ul>
       </div>
 
-      <div class="footer-col">
-        <h4>Contacto Directo</h4>
-        <div class="footer-links-list">
-          <a href="mailto:admin@attdiv.com">
-            <strong>Correo:</strong> admin@attdiv.com
-          </a>
-          <span style="font-size:0.85rem;color:#8e7d6e;">
-            <strong>Dirección:</strong><br>
-            8206 Louisiana Blvd NE, Ste A #11163, Albuquerque, NM 87113
-          </span>
-          <span style="font-size:0.85rem;color:#8e7d6e;">
-            <strong>Horario:</strong><br>
-            Lunes a Viernes 8:00 AM - 17:00 PM PST
-          </span>
-        </div>
+      <div class="ft-col">
+        <h4>Metodología</h4>
+        <ul>
+          <li><a href="#proceso">Consulta y Análisis</a></li>
+          <li><a href="#proceso">Modelado Espacial</a></li>
+          <li><a href="#proceso">Planos de Ejecución</a></li>
+          <li><a href="#proceso">Entrega Técnica</a></li>
+        </ul>
+      </div>
+
+      <div class="ft-col">
+        <h4>Empresa</h4>
+        <ul>
+          <li><a href="#nosotros">Sobre Nosotros</a></li>
+          <li><a href="#proyectos">Portafolio 3D</a></li>
+          <li><a href="#contacto">Contacto Directo</a></li>
+          <li><a href="mailto:admin@attdiv.com">admin@attdiv.com</a></li>
+        </ul>
       </div>
     </div>
 
-    <div class="container footer-bottom">
-      <span>© 2026 ATTDIV LLC. Todos los derechos reservados. Servicio 100% Online de Planos 3D de Construcción.</span>
-      <a href="#inicio" class="text-gold" style="font-size:0.82rem;">Volver al Inicio ↑</a>
+    <div class="ft-bot">
+      <div class="ft-cp">
+        &copy; 2026 ATTDIV LLC. Todos los derechos reservados.
+      </div>
+      <div class="ft-leg">
+        <a href="#">Términos de Servicio</a>
+        <a href="#">Privacidad Técnica</a>
+      </div>
     </div>
   </footer>
 
-  <!-- MODAL LIGHTBOX FOR PROJECT ZOOM -->
-  <div class="modal-overlay" id="projectModal" aria-hidden="true" role="dialog">
-    <div class="modal-content">
-      <button type="button" class="modal-close-btn" aria-label="Cerrar modal">&times;</button>
-      <img src="" alt="" id="modalImg" style="width:100%;height:auto;border-radius:6px;margin-bottom:1.2rem;display:none;">
-      <h3 id="modalTitle" style="font-size:1.4rem;margin-bottom:0.4rem;color:#fff;"></h3>
-      <p id="modalDesc" style="color:#bfaea0;font-size:0.92rem;line-height:1.6;margin-bottom:1rem;"></p>
-      <div id="modalSpecs" class="font-mono text-gold" style="font-size:0.82rem;padding-top:0.8rem;border-top:1px solid var(--border-subtle);"></div>
-    </div>
-  </div>
+  <!-- ========================================================================
+       MOBILE FLOATING ACTION BAR (Fixed & Padding Protected)
+       ======================================================================== -->
+  <aside class="mob-bar" aria-label="Acciones rápidas móviles">
+    <a href="mailto:admin@attdiv.com" class="mob-bar-btn mob-bar-mail">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      <span>admin@attdiv.com</span>
+    </a>
+    <a href="#contacto" class="mob-bar-btn mob-bar-cta">
+      <span>Cotizar Planos</span>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </aside>
 
+  <!-- Script -->
   <script src="assets/js/main.js"></script>
 </body>
 </html>

@@ -3,272 +3,255 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-  <title>Servicios de Planos 3D Online | ATTDIV LLC</title>
-  <meta name="description" content="Servicios especializados en diseño y elaboración de planos 3D de construcción 100% online por ATTDIV LLC. Planos arquitectónicos, estructurales y MEP llave en mano.">
-  <link rel="icon" type="image/png" href="assets/img/favicon-attdiv.png?v=4">
-  <link rel="shortcut icon" href="favicon.ico?v=4">
-  <link rel="apple-touch-icon" href="assets/img/favicon-attdiv.png?v=4">
+  <title>Servicios de Planos 3D y Modelado BIM | ATTDIV LLC</title>
+  <meta name="description" content="Catálogo completo de servicios de diseño y elaboración de planos 3D de construcción, modelado BIM y cumplimiento normativo IBC/IRC por ATTDIV LLC en EE.UU.">
+  <link rel="icon" type="image/png" href="assets/img/favicon-attdiv.png">
+  <link rel="apple-touch-icon" href="assets/img/favicon-attdiv.png">
   <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
 
-  <!-- Ambient Glow Spotlights -->
-  <div class="ambient-glow-1"></div>
-  <div class="ambient-glow-2"></div>
+  <!-- Constructora García Dual Interactive Mouse Cursor -->
+  <div id="cur"></div>
+  <div id="cring"></div>
 
-  <!-- MINIMAL FLOATING HEADER -->
-  <header class="header">
-    <div class="container nav-container">
-      <a href="index.html" class="logo-brand">
-        <img src="assets/img/logo-horizontal-light.png" alt="ATTDIV LLC" class="logo-img">
-      </a>
+  <!-- NAVIGATION BAR -->
+  <header id="nav">
+    <a href="index.html" class="logo" aria-label="ATTDIV LLC Inicio">
+      <img src="assets/img/logo-horizontal-light.png" alt="ATTDIV LLC Logo">
+    </a>
 
-      <nav class="nav-menu" id="desktopNav">
-        <a href="index.html#inicio" class="nav-link">Inicio</a>
-        <a href="index.html#estudio" class="nav-link">Quiénes Somos</a>
-        <a href="servicios.html" class="nav-link active">Servicios 3D</a>
-        <a href="index.html#simulador" class="nav-link">Simulador 3D</a>
-        <a href="index.html#metodologia" class="nav-link">Metodología</a>
-        <a href="proyectos.html" class="nav-link">Proyectos</a>
-        <a href="index.html#contacto" class="nav-link">Contacto</a>
-      </nav>
+    <ul>
+      <li><a href="index.html#hero">Inicio</a></li>
+      <li><a href="index.html#nosotros">Nosotros</a></li>
+      <li><a href="servicios.html" style="color: var(--sand);">Servicios 3D</a></li>
+      <li><a href="index.html#simulador">Simulador 3D</a></li>
+      <li><a href="index.html#proceso">Metodología</a></li>
+      <li><a href="proyectos.html">Proyectos</a></li>
+      <li><a href="index.html#contacto">Contacto</a></li>
+    </ul>
 
-      <div class="nav-actions">
-        <a href="mailto:admin@attdiv.com?subject=Consulta%20Planos%203D%20ATTDIV%20LLC" class="btn btn-primary desktop-cta">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-          <span>Contactar</span>
-        </a>
-        <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-        </button>
-      </div>
+    <div class="nav-actions">
+      <a href="index.html#contacto" class="cta">Cotizar Proyecto</a>
+      <button id="hbg" aria-label="Abrir menú de navegación">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
   </header>
 
-  <!-- MOBILE DRAWER -->
-  <aside class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
-    <div class="drawer-links">
-      <a href="index.html#inicio" class="drawer-link"><span>Inicio</span> <span>→</span></a>
-      <a href="index.html#estudio" class="drawer-link"><span>Quiénes Somos</span> <span>→</span></a>
-      <a href="servicios.html" class="drawer-link active"><span>Servicios 3D</span> <span>→</span></a>
-      <a href="index.html#simulador" class="drawer-link"><span>Simulador 3D</span> <span>→</span></a>
-      <a href="index.html#metodologia" class="drawer-link"><span>Metodología</span> <span>→</span></a>
-      <a href="proyectos.html" class="drawer-link"><span>Proyectos</span> <span>→</span></a>
-      <a href="index.html#contacto" class="drawer-link"><span>Contacto Directo</span> <span>→</span></a>
+  <!-- Mobile Overlay Menu -->
+  <div id="mob" aria-hidden="true">
+    <button class="mx" id="mobX" aria-label="Cerrar menú">&times;</button>
+    <a href="index.html#hero" onclick="closeMob()">Inicio</a>
+    <a href="index.html#nosotros" onclick="closeMob()">Nosotros</a>
+    <a href="servicios.html" onclick="closeMob()" style="color: var(--sand);">Servicios 3D</a>
+    <a href="index.html#simulador" onclick="closeMob()">Simulador 3D</a>
+    <a href="index.html#proceso" onclick="closeMob()">Metodología</a>
+    <a href="proyectos.html" onclick="closeMob()">Proyectos</a>
+    <a href="index.html#contacto" onclick="closeMob()">Contacto</a>
+    <div class="mob-meta">
+      <p>ATTDIV LLC • Planos 3D de Construcción</p>
+      <p style="color: var(--sand); margin-top: 4px;">admin@attdiv.com</p>
     </div>
+  </div>
 
-    <div class="drawer-footer">
-      <a href="mailto:admin@attdiv.com?subject=Consulta%20Planos%203D%20ATTDIV%20LLC" class="btn btn-primary btn-block-mobile">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-        <span>Escribir al Correo</span>
-      </a>
-      <span class="font-mono text-muted" style="font-size:0.75rem;text-align:center;">
-        admin@attdiv.com • Albuquerque, NM
-      </span>
-    </div>
-  </aside>
-
-  <main>
+  <main style="padding-top: var(--nav-h);">
     <!-- PAGE HERO -->
-    <section style="padding:3.5rem 0 2.5rem;text-align:center;">
-      <div class="container" style="max-width:850px;">
-        <span class="section-pill"><span class="pulse-dot"></span> CATÁLOGO DE ESPECIALIDADES</span>
-        <h1 class="section-title">Servicios de Planos 3D Online</h1>
-        <p class="section-subtitle">
-          Soluciones arquitectónicas de precisión para constructores, contratistas y propietarios en todo Estados Unidos. Entrega 100% digital en formatos DWG, RVT, IFC y PDF vectoriales listos para licencias de construcción.
-        </p>
+    <section style="background: var(--dark); padding: clamp(60px, 8vw, 100px) 8vw 40px; text-align: center;">
+      <div class="stag" style="justify-content: center;">
+        <span>Catálogo Técnico de Especialidades</span>
+      </div>
+      <h1 class="stitle" style="font-size: clamp(44px, 7.5vw, 96px); margin-bottom: 20px;">
+        SERVICIOS DE <span class="accent">PLANOS 3D</span> & BIM
+      </h1>
+      <p class="hsub" style="max-width: 680px; margin: 0 auto; text-align: center;">
+        Soluciones arquitectónicas de precisión para constructores, contratistas y propietarios en todo Estados Unidos. Entrega 100% digital en formatos DWG, RVT, IFC y PDF listos para licencias de construcción.
+      </p>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-inner">
+        <span>SERVICIO 100% ONLINE <span class="mdot"></span> COBERTURA EN TODO EE.UU. <span class="mdot"></span> MODELADO BIM & PLANOS 3D <span class="mdot"></span> PERMISOS MUNICIPALES IBC/IRC <span class="mdot"></span> TOLERANCIA CERO</span>
+        <span>SERVICIO 100% ONLINE <span class="mdot"></span> COBERTURA EN TODO EE.UU. <span class="mdot"></span> MODELADO BIM & PLANOS 3D <span class="mdot"></span> PERMISOS MUNICIPALES IBC/IRC <span class="mdot"></span> TOLERANCIA CERO</span>
+      </div>
+    </div>
+
+    <!-- SERVICES DETAILED STACK -->
+    <section style="background: var(--black);">
+      <div class="sv-grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
+        
+        <!-- Servicio 01 -->
+        <div class="sv rv d1">
+          <span class="sv-num">01</span>
+          <div class="sv-ic">
+            <svg viewBox="0 0 24 24"><path d="M3 3h18v18H3zM3 9h18M9 21V9"/></svg>
+          </div>
+          <h2 class="sv-tt">Planos 3D Integrales y Proyectos Llave en Mano</h2>
+          <p class="sv-ds">
+            Desarrollo técnico exhaustivo desde la cimentación hasta los acabados finales, brindando una solución confiable y precisa para contratistas y propietarios.
+          </p>
+          <ul class="sv-items">
+            <li>
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Planos de instalaciones eléctricas, sanitarias y plomería 100% ONLINE.</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Planos de detalle de carpintería, herrería y amoblamiento en 3D.</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Planos de distribución y detalles de muros y divisiones.</span>
+            </li>
+          </ul>
+          <div class="sv-tags">
+            <span class="sv-tag">Planimetría Integral</span>
+            <span class="sv-tag">Instalaciones MEP</span>
+            <span class="sv-tag">Cortes Técnicos</span>
+          </div>
+        </div>
+
+        <!-- Servicio 02 -->
+        <div class="sv rv d2">
+          <span class="sv-num">02</span>
+          <div class="sv-ic">
+            <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </div>
+          <h2 class="sv-tt">Diseño y Elaboración de Planos de Construcción</h2>
+          <p class="sv-ds">
+            Creamos planos arquitectónicos detallados y estructurados para proyectos residenciales y comerciales en cualquier estado de EE.UU.
+          </p>
+          <ul class="sv-items">
+            <li>
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Modelado BIM tridimensional de alta fidelidad y coordinación.</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Cortes por fachada, secciones constructivas y detalles de armado.</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Cuadros de especificaciones técnicas de materiales y acabados.</span>
+            </li>
+          </ul>
+          <div class="sv-tags">
+            <span class="sv-tag">BIM Paramétrico</span>
+            <span class="sv-tag">Modelos 3D</span>
+            <span class="sv-tag">Revit / DWG</span>
+          </div>
+        </div>
+
+        <!-- Servicio 03 -->
+        <div class="sv rv d3">
+          <span class="sv-num">03</span>
+          <div class="sv-ic">
+            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          </div>
+          <h2 class="sv-tt">Gestión Técnica y Compatibilidad para Permisos</h2>
+          <p class="sv-ds">
+            Elaboración de planos constructivos para permisos municipales y radicación oficial bajo códigos vigentes (IBC, IRC, normativas locales de zonificación, seguridad sísmica y contra incendios).
+          </p>
+          <ul class="sv-items">
+            <li>
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Cumplimiento de códigos constructivos y licencias de edificación.</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Láminas normalizadas listas para sellado y aprobación técnica.</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Acompañamiento técnico para aclaraciones y subsanación de observaciones.</span>
+            </li>
+          </ul>
+          <div class="sv-tags">
+            <span class="sv-tag">IBC / IRC Code</span>
+            <span class="sv-tag">Building Permits</span>
+            <span class="sv-tag">Normativa USA</span>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- SERVICES STACK -->
-    <section class="services-section" style="padding-top:1rem;">
-      <div class="container">
-        <div class="services-stack">
-          
-          <!-- SERVICE 1 -->
-          <div class="service-deck-card">
-            <div class="service-deck-media">
-              <img src="assets/img/service-dist.jpg" alt="Planos 3D Integrales y Proyectos Llave en Mano">
-            </div>
-            <div class="service-deck-content">
-              <div class="service-deck-header">
-                <span class="font-mono text-gold" style="font-size:0.75rem;text-transform:uppercase;">ESPECIALIDAD 01</span>
-                <h2 class="service-deck-title">Planos 3D Integrales y Proyectos Llave en Mano</h2>
-                <p class="service-deck-desc">
-                  Empresa especializada en el diseño y elaboración de planos para proyectos llave en mano, brindando una solución confiable y precisa. Cubre todas las especialidades técnicas de la edificación:
-                </p>
-              </div>
-
-              <div class="service-checklist-grid">
-                <div class="check-item">
-                  <span class="check-icon">✓</span>
-                  <span>Planos de instalaciones eléctricas, sanitarias y plomería 100% ONLINE.</span>
-                </div>
-                <div class="check-item">
-                  <span class="check-icon">✓</span>
-                  <span>Planos de detalle de carpintería, herrería y amoblamiento 3D.</span>
-                </div>
-                <div class="check-item">
-                  <span class="check-icon">✓</span>
-                  <span>Planos de distribución y detalles de muros de tablayeso a gran escala.</span>
-                </div>
-                <div class="check-item">
-                  <span class="check-icon">✓</span>
-                  <span>Planos y especificación de revestimientos, pisos y azulejos.</span>
-                </div>
-                <div class="check-item">
-                  <span class="check-icon">✓</span>
-                  <span>Diseño y planos integrales 100% ONLINE para remodelaciones.</span>
-                </div>
-                <div class="check-item">
-                  <span class="check-icon">✓</span>
-                  <span>Asesoría y dirección técnica 100% ONLINE del cumplimiento de planos.</span>
-                </div>
-              </div>
-
-              <div>
-                <a href="mailto:admin@attdiv.com?subject=Consulta%20Proyecto%20Llave%20en%20Mano%20-%20ATTDIV%20LLC" class="btn btn-primary btn-block-mobile">
-                  <span>Consultar Paquete Llave en Mano</span>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- SERVICE 2 -->
-          <div class="service-deck-card">
-            <div class="service-deck-media">
-              <img src="assets/img/service-concept.jpg" alt="Diseño y Conceptualización 3D Arquitectónica">
-            </div>
-            <div class="service-deck-content">
-              <div class="service-deck-header">
-                <span class="font-mono text-gold" style="font-size:0.75rem;text-transform:uppercase;">ESPECIALIDAD 02</span>
-                <h2 class="service-deck-title">Diseño y Conceptualización 3D Arquitectónica</h2>
-                <p class="service-deck-desc">
-                  Definición volumétrica, estética y funcional antes de construir. Modelamos tu espacio con exactitud milimétrica para que tomes decisiones 100% informadas:
-                </p>
-              </div>
-
-              <div class="service-checklist-grid">
-                <div class="check-item">
-                  <span class="check-icon">✓</span>
-                  <span>Moodboard digital 100% ONLINE con especificación de materiales.</span>
-                </div>
-                <div class="check-item">
-                  <span class="check-icon">✓</span>
-                  <span>Conceptualización del look & feel e iluminación de espacios.</span>
-                </div>
-                <div class="check-item">
-                  <span class="check-icon">✓</span>
-                  <span>Renderizados 3D fotorrealistas y recorridos virtuales interactivos.</span>
-                </div>
-                <div class="check-item">
-                  <span class="check-icon">✓</span>
-                  <span>Asesoría online para la implementación fiel de los planos técnicos.</span>
-                </div>
-                <div class="check-item">
-                  <span class="check-icon">✓</span>
-                  <span>Revisiones y ajustes ilimitados en línea para tu total satisfacción.</span>
-                </div>
-              </div>
-
-              <div>
-                <a href="mailto:admin@attdiv.com?subject=Consulta%20Conceptualizacion%203D%20-%20ATTDIV%20LLC" class="btn btn-primary btn-block-mobile">
-                  <span>Consultar Diseño y Conceptualización</span>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- SERVICE 3 -->
-          <div class="service-deck-card">
-            <div class="service-deck-media">
-              <img src="assets/img/service-mep.jpg" alt="Planos de Distribución, Estructuras y Acabados 3D">
-            </div>
-            <div class="service-deck-content">
-              <div class="service-deck-header">
-                <span class="font-mono text-gold" style="font-size:0.75rem;text-transform:uppercase;">ESPECIALIDAD 03</span>
-                <h2 class="service-deck-title">Planos de Distribución, Estructuras y Acabados 3D</h2>
-                <p class="service-deck-desc">
-                  Elaboración de planos de distribución interna, arquitectura y acabados para proyectos de gran escala, edificios multifamiliares y complejos comerciales:
-                </p>
-              </div>
-
-              <div class="service-checklist-grid">
-                <div class="check-item">
-                  <span class="check-icon">✓</span>
-                  <span>Planos de fachadas y detalles técnicos para muros tipo DEFS y EIFS.</span>
-                </div>
-                <div class="check-item">
-                  <span class="check-icon">✓</span>
-                  <span>Planos de modulación y especificación de pisos y azulejos.</span>
-                </div>
-                <div class="check-item">
-                  <span class="check-icon">✓</span>
-                  <span>Asesoría técnica 100% ONLINE adaptada a los procesos de cualquier empresa.</span>
-                </div>
-                <div class="check-item">
-                  <span class="check-icon">✓</span>
-                  <span>Planos de divisiones de tablayeso y acabados interiores y exteriores.</span>
-                </div>
-                <div class="check-item">
-                  <span class="check-icon">✓</span>
-                  <span>Planos y especificaciones de esquemas de pintura y recubrimientos.</span>
-                </div>
-              </div>
-
-              <div>
-                <a href="mailto:admin@attdiv.com?subject=Consulta%20Planos%20de%20Distribucion%20-%20ATTDIV%20LLC" class="btn btn-primary btn-block-mobile">
-                  <span>Consultar Planos de Distribución</span>
-                </a>
-              </div>
-            </div>
-          </div>
-
-        </div>
+    <!-- CALL TO ACTION -->
+    <section style="background: var(--dark); text-align: center; padding: clamp(60px, 8vw, 100px) 8vw;">
+      <div class="stag" style="justify-content: center;">
+        <span>¿Listo para comenzar?</span>
+      </div>
+      <h2 class="stitle" style="margin-bottom: 24px;">SOLICITA TU COTIZACIÓN <span class="accent">TÉCNICA ONLINE</span></h2>
+      <p class="hsub" style="max-width: 580px; margin: 0 auto 32px; text-align: center;">
+        Envíanos los detalles de tu proyecto o croquis preliminar y recibe una propuesta con alcances, plazos y costos detallados.
+      </p>
+      <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
+        <a href="index.html#contacto" class="btn-w">Contactar Equipo Técnico</a>
+        <a href="proyectos.html" class="btn-g">Ver Portafolio de Proyectos</a>
       </div>
     </section>
   </main>
 
   <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container footer-grid">
-      <div class="footer-brand">
-        <a href="index.html" class="logo-brand">
-          <img src="assets/img/logo-horizontal-light.png" alt="ATTDIV LLC" class="logo-img" style="height:44px;">
+  <footer>
+    <div class="ft-grid">
+      <div>
+        <a href="index.html#hero" class="ft-logo">
+          <img src="assets/img/logo-horizontal-light.png" alt="ATTDIV LLC">
         </a>
-        <p>Estudio especializado en el diseño y elaboración de planos 3D de construcción 100% ONLINE en Estados Unidos.</p>
-        <span class="font-mono text-muted" style="font-size:0.75rem;">ATTDIV LLC • Albuquerque, NM</span>
+        <p class="ft-tg">
+          Especialistas en desarrollo de planos constructivos 3D, modelado BIM y soporte técnico para proyectos arquitectónicos en todo EE.UU.
+        </p>
       </div>
-      <div class="footer-col">
+      <div class="ft-col">
         <h4>Servicios 3D</h4>
-        <div class="footer-links-list">
-          <a href="servicios.html">Planos 3D Llave en Mano</a>
-          <a href="servicios.html">Diseño y Conceptualización</a>
-          <a href="servicios.html">Distribución y Tablayeso</a>
-        </div>
+        <ul>
+          <li><a href="servicios.html">Planos de Distribución</a></li>
+          <li><a href="servicios.html">Modelado BIM 3D</a></li>
+          <li><a href="servicios.html">Permisos Municipales</a></li>
+          <li><a href="index.html#simulador">Simulador CAD vs 3D</a></li>
+        </ul>
       </div>
-      <div class="footer-col">
-        <h4>Navegación</h4>
-        <div class="footer-links-list">
-          <a href="index.html">Inicio</a>
-          <a href="proyectos.html">Proyectos</a>
-          <a href="index.html#contacto">Contacto</a>
-        </div>
+      <div class="ft-col">
+        <h4>Empresa</h4>
+        <ul>
+          <li><a href="index.html#nosotros">Sobre Nosotros</a></li>
+          <li><a href="proyectos.html">Portafolio 3D</a></li>
+          <li><a href="index.html#contacto">Contacto Directo</a></li>
+          <li><a href="mailto:admin@attdiv.com">admin@attdiv.com</a></li>
+        </ul>
       </div>
-      <div class="footer-col">
-        <h4>Contacto Oficial</h4>
-        <div class="footer-links-list">
-          <span style="color:#fff;font-weight:700;">ATTDIV LLC</span>
-          <span style="font-size:0.85rem;color:#8e7d6e;">8206 Louisiana Blvd NE, Ste A #11163, Albuquerque, NM 87113</span>
-          <a href="mailto:admin@attdiv.com" class="text-gold">admin@attdiv.com</a>
-        </div>
+      <div class="ft-col">
+        <h4>Contacto Directo</h4>
+        <ul>
+          <li><a href="mailto:admin@attdiv.com">admin@attdiv.com</a></li>
+          <li style="font-size: 13px; color: var(--gray);">Albuquerque, Nuevo México</li>
+          <li style="font-size: 13px; color: var(--gray);">Lun - Vie: 8:00 - 17:00 PST</li>
+        </ul>
       </div>
     </div>
-    <div class="container footer-bottom">
-      <span>© 2026 ATTDIV LLC. Todos los derechos reservados.</span>
-      <a href="index.html" class="text-gold" style="font-size:0.82rem;">Volver al Inicio ↑</a>
+    <div class="ft-bot">
+      <div class="ft-cp">&copy; 2026 ATTDIV LLC. Todos los derechos reservados.</div>
+      <div class="ft-leg">
+        <a href="#">Términos de Servicio</a>
+        <a href="#">Privacidad Técnica</a>
+      </div>
     </div>
   </footer>
+
+  <!-- MOBILE FLOATING ACTION BAR -->
+  <aside class="mob-bar" aria-label="Acciones rápidas móviles">
+    <a href="mailto:admin@attdiv.com" class="mob-bar-btn mob-bar-mail">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      <span>admin@attdiv.com</span>
+    </a>
+    <a href="index.html#contacto" class="mob-bar-btn mob-bar-cta">
+      <span>Cotizar Planos</span>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </aside>
 
   <script src="assets/js/main.js"></script>
 </body>

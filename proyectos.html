@@ -3,256 +3,216 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-  <title>Portafolio de Proyectos 3D | ATTDIV LLC</title>
-  <meta name="description" content="Portafolio de proyectos y planos arquitectónicos 3D desarrollados por ATTDIV LLC en Estados Unidos. Obras residenciales, de descanso, y condominios modernos.">
-  <link rel="icon" type="image/png" href="assets/img/favicon-attdiv.png?v=4">
-  <link rel="shortcut icon" href="favicon.ico?v=4">
-  <link rel="apple-touch-icon" href="assets/img/favicon-attdiv.png?v=4">
+  <title>Portafolio de Planos 3D y Proyectos | ATTDIV LLC</title>
+  <meta name="description" content="Portafolio de planos arquitectónicos 3D, proyectos residenciales y modelado BIM desarrollados por ATTDIV LLC para clientes en todo EE.UU.">
+  <link rel="icon" type="image/png" href="assets/img/favicon-attdiv.png">
+  <link rel="apple-touch-icon" href="assets/img/favicon-attdiv.png">
   <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
 
-  <!-- Ambient Glow Spotlights -->
-  <div class="ambient-glow-1"></div>
-  <div class="ambient-glow-2"></div>
+  <!-- Constructora García Dual Interactive Mouse Cursor -->
+  <div id="cur"></div>
+  <div id="cring"></div>
 
-  <!-- MINIMAL FLOATING HEADER -->
-  <header class="header">
-    <div class="container nav-container">
-      <a href="index.html" class="logo-brand">
-        <img src="assets/img/logo-horizontal-light.png" alt="ATTDIV LLC" class="logo-img">
-      </a>
-      <nav class="nav-menu" id="desktopNav">
-        <a href="index.html#inicio" class="nav-link">Inicio</a>
-        <a href="index.html#estudio" class="nav-link">Quiénes Somos</a>
-        <a href="servicios.html" class="nav-link">Servicios 3D</a>
-        <a href="index.html#simulador" class="nav-link">Simulador 3D</a>
-        <a href="index.html#metodologia" class="nav-link">Metodología</a>
-        <a href="proyectos.html" class="nav-link active">Proyectos</a>
-        <a href="index.html#contacto" class="nav-link">Contacto</a>
-      </nav>
-      <div class="nav-actions">
-        <a href="mailto:admin@attdiv.com?subject=Consulta%20Planos%203D%20ATTDIV%20LLC" class="btn btn-primary desktop-cta">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-          <span>Contactar</span>
-        </a>
-        <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-        </button>
-      </div>
+  <!-- NAVIGATION BAR -->
+  <header id="nav">
+    <a href="index.html" class="logo" aria-label="ATTDIV LLC Inicio">
+      <img src="assets/img/logo-horizontal-light.png" alt="ATTDIV LLC Logo">
+    </a>
+
+    <ul>
+      <li><a href="index.html#hero">Inicio</a></li>
+      <li><a href="index.html#nosotros">Nosotros</a></li>
+      <li><a href="servicios.html">Servicios 3D</a></li>
+      <li><a href="index.html#simulador">Simulador 3D</a></li>
+      <li><a href="index.html#proceso">Metodología</a></li>
+      <li><a href="proyectos.html" style="color: var(--sand);">Proyectos</a></li>
+      <li><a href="index.html#contacto">Contacto</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <a href="index.html#contacto" class="cta">Cotizar Proyecto</a>
+      <button id="hbg" aria-label="Abrir menú de navegación">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
   </header>
 
-  <!-- MOBILE DRAWER -->
-  <aside class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
-    <div class="drawer-links">
-      <a href="index.html#inicio" class="drawer-link"><span>Inicio</span> <span>→</span></a>
-      <a href="index.html#estudio" class="drawer-link"><span>Quiénes Somos</span> <span>→</span></a>
-      <a href="servicios.html" class="drawer-link"><span>Servicios 3D</span> <span>→</span></a>
-      <a href="index.html#simulador" class="drawer-link"><span>Simulador 3D</span> <span>→</span></a>
-      <a href="index.html#metodologia" class="drawer-link"><span>Metodología</span> <span>→</span></a>
-      <a href="proyectos.html" class="drawer-link active"><span>Proyectos</span> <span>→</span></a>
-      <a href="index.html#contacto" class="drawer-link"><span>Contacto Directo</span> <span>→</span></a>
+  <!-- Mobile Overlay Menu -->
+  <div id="mob" aria-hidden="true">
+    <button class="mx" id="mobX" aria-label="Cerrar menú">&times;</button>
+    <a href="index.html#hero" onclick="closeMob()">Inicio</a>
+    <a href="index.html#nosotros" onclick="closeMob()">Nosotros</a>
+    <a href="servicios.html" onclick="closeMob()">Servicios 3D</a>
+    <a href="index.html#simulador" onclick="closeMob()">Simulador 3D</a>
+    <a href="index.html#proceso" onclick="closeMob()">Metodología</a>
+    <a href="proyectos.html" onclick="closeMob()" style="color: var(--sand);">Proyectos</a>
+    <a href="index.html#contacto" onclick="closeMob()">Contacto</a>
+    <div class="mob-meta">
+      <p>ATTDIV LLC • Planos 3D de Construcción</p>
+      <p style="color: var(--sand); margin-top: 4px;">admin@attdiv.com</p>
     </div>
+  </div>
 
-    <div class="drawer-footer">
-      <a href="mailto:admin@attdiv.com?subject=Consulta%20Planos%203D%20ATTDIV%20LLC" class="btn btn-primary btn-block-mobile">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-        <span>Escribir al Correo</span>
-      </a>
-      <span class="font-mono text-muted" style="font-size:0.75rem;text-align:center;">
-        admin@attdiv.com • Albuquerque, NM
-      </span>
-    </div>
-  </aside>
-
-  <main>
+  <main style="padding-top: var(--nav-h);">
     <!-- PAGE HERO -->
-    <section style="padding:3.5rem 0 2.5rem;text-align:center;">
-      <div class="container" style="max-width:850px;">
-        <span class="section-pill"><span class="pulse-dot"></span> PROYECTOS TÉCNICOS DESTACADOS</span>
-        <h1 class="section-title">Portafolio de Planos 3D</h1>
-        <p class="section-subtitle">
-          Explora algunos de nuestros desarrollos de arquitectura digital y planos 3D 100% online para residencias modernas de lujo, viviendas campestres, condominios y proyectos comerciales en EE.UU.
-        </p>
+    <section style="background: var(--dark); padding: clamp(60px, 8vw, 100px) 8vw 40px; text-align: center;">
+      <div class="stag" style="justify-content: center;">
+        <span>Galería de Obras y Modelado</span>
+      </div>
+      <h1 class="stitle" style="font-size: clamp(44px, 7.5vw, 96px); margin-bottom: 20px;">
+        PORTAFOLIO DE <span class="accent">PLANOS 3D</span>
+      </h1>
+      <p class="hsub" style="max-width: 680px; margin: 0 auto; text-align: center;">
+        Explora nuestros desarrollos técnicos de arquitectura digital y planos 3D para residencias de lujo, villas campestres, complejos habitacionales y condominios en EE.UU.
+      </p>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-inner">
+        <span>RESIDENCIAL MODERNO <span class="mdot"></span> CASAS DE DESCANSO <span class="mdot"></span> COMPLEJOS HABITACIONALES <span class="mdot"></span> MODELADO BIM REVID <span class="mdot"></span> PLANOS AUTOCAD DWG</span>
+        <span>RESIDENCIAL MODERNO <span class="mdot"></span> CASAS DE DESCANSO <span class="mdot"></span> COMPLEJOS HABITACIONALES <span class="mdot"></span> MODELADO BIM REVID <span class="mdot"></span> PLANOS AUTOCAD DWG</span>
+      </div>
+    </div>
+
+    <!-- PROJECTS GALLERY (Constructora García 12-Column Grid) -->
+    <section style="background: var(--black);">
+      <div class="pj-grid">
+        <!-- Proyecto 1: Big Feature -->
+        <div class="pj">
+          <img src="assets/img/port-canada.jpg" alt="Residencia La Cañada - Planos 3D y Distribución">
+          <div class="pj-ov">
+            <div>
+              <span class="pj-cat">Residencial Contemporáneo • 3,800 sq ft</span>
+              <div class="pj-nm">Residencia La Cañada • Planos 3D</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Proyecto 2: Portrait -->
+        <div class="pj">
+          <img src="assets/img/port-sacramento.jpg" alt="Complejo Residencial Sacramento - Modelado BIM">
+          <div class="pj-ov">
+            <div>
+              <span class="pj-cat">Modelado BIM & MEP • 12 Unidades</span>
+              <div class="pj-nm">Complejo Sacramento</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Proyecto 3: Grid bottom 1 -->
+        <div class="pj">
+          <img src="assets/img/port-loft.jpg" alt="Loft Industrial Urbano - Planos de Acabados">
+          <div class="pj-ov">
+            <div>
+              <span class="pj-cat">Diseño de Espacios • 1,950 sq ft</span>
+              <div class="pj-nm">Loft Industrial Urbano</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Proyecto 4: Grid bottom 2 -->
+        <div class="pj">
+          <img src="assets/img/port-campo.jpg" alt="Villa Campestre - Planimetría Integral">
+          <div class="pj-ov">
+            <div>
+              <span class="pj-cat">Arquitectura Campestre • 4,200 sq ft</span>
+              <div class="pj-nm">Villa Campestre 3D</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Proyecto 5: Grid bottom 3 -->
+        <div class="pj">
+          <img src="assets/img/port-penthouse.jpg" alt="Penthouse Panorámico - Renders y Licencias">
+          <div class="pj-ov">
+            <div>
+              <span class="pj-cat">Renders & Permisos • 2,800 sq ft</span>
+              <div class="pj-nm">Penthouse Panorámico</div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- PORTFOLIO SECTION -->
-    <section class="portfolio-section" style="padding-top:1rem;">
-      <div class="container">
-        <div class="portfolio-grid">
-          
-          <!-- PROJECT 1 -->
-          <div class="project-card" data-title="Residencia Moderna: La Cañada" data-desc="Planos 3D arquitectónicos y despieces técnicos de tablayeso para residencia de lujo contemporánea con piscina y terrazas." data-specs="Área: 3,800 sq ft • Revit BIM + DWG • 100% Online">
-            <div class="project-media-box">
-              <img src="assets/img/port-canada.jpg" alt="Planos 3D Residencia Moderna La Cañada">
-              <span class="project-tag">Residencial 3D</span>
-            </div>
-            <div class="project-body">
-              <div>
-                <h3 class="project-title">Residencia Moderna: La Cañada</h3>
-                <p class="project-desc">Planos 3D de arquitectura residencial, divisiones de tablayeso y acabados interiores de primera categoría.</p>
-              </div>
-              <div class="project-specs-line">
-                <span>3,800 sq ft</span>
-                <span class="text-gold">Ver Detalles →</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- PROJECT 2 -->
-          <div class="project-card" data-title="Estructura Metálica: Residencias de Descanso" data-desc="Planos 3D estructurales metálicos y diseño arquitectónico 3D para residencia de descanso contemporánea." data-specs="Área: 2,900 sq ft • AutoCAD 3D + Tekla • 100% Online">
-            <div class="project-media-box">
-              <img src="assets/img/port-descanso.jpg" alt="Planos 3D Estructura Metálica Residencias de Descanso">
-              <span class="project-tag">Estructura & Acero</span>
-            </div>
-            <div class="project-body">
-              <div>
-                <h3 class="project-title">Residencias de Descanso</h3>
-                <p class="project-desc">Planos 3D estructurales en acero, modulación técnica y envolventes térmicas para descanso.</p>
-              </div>
-              <div class="project-specs-line">
-                <span>2,900 sq ft</span>
-                <span class="text-gold">Ver Detalles →</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- PROJECT 3 -->
-          <div class="project-card" data-title="Residencia Contemporánea: Sacramento, CA" data-desc="Planos 3D integrales para residencia unifamiliar moderna de dos niveles en Sacramento, CA." data-specs="Área: 4,200 sq ft • Revit BIM + DWG • 100% Online">
-            <div class="project-media-box">
-              <img src="assets/img/port-sacramento.jpg" alt="Planos 3D Residencia Contemporánea Sacramento">
-              <span class="project-tag">BIM Integral</span>
-            </div>
-            <div class="project-body">
-              <div>
-                <h3 class="project-title">Residencia Sacramento, CA</h3>
-                <p class="project-desc">Planimetría 3D integral, diseño de volumetría moderna, terrazas y acabados exteriores.</p>
-              </div>
-              <div class="project-specs-line">
-                <span>4,200 sq ft</span>
-                <span class="text-gold">Ver Detalles →</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- PROJECT 4 -->
-          <div class="project-card" data-title="Loft Urbano y Espacios Abiertos" data-desc="Planos 3D de distribución interior, modulación de tablayeso para loft y cocina abierta, iluminación técnica." data-specs="Área: 2,400 sq ft • AutoCAD 3D + SketchUp • 100% Online">
-            <div class="project-media-box">
-              <img src="assets/img/port-loft.jpg" alt="Planos 3D Loft Urbano y Espacios Abiertos">
-              <span class="project-tag">Interiorismo 3D</span>
-            </div>
-            <div class="project-body">
-              <div>
-                <h3 class="project-title">Loft Urbano & Espacios Abiertos</h3>
-                <p class="project-desc">Planos de modulación de cielo falso, iluminación técnica, tabiquería y carpintería fina.</p>
-              </div>
-              <div class="project-specs-line">
-                <span>2,400 sq ft</span>
-                <span class="text-gold">Ver Detalles →</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- PROJECT 5 -->
-          <div class="project-card" data-title="Villa de Campo y Terrazas" data-desc="Planos 3D de volumetría moderna y fachadas con pérgolas metálicas, recubrimientos en piedra y grandes ventanales." data-specs="Área: 3,100 sq ft • Revit BIM + Lumion • 100% Online">
-            <div class="project-media-box">
-              <img src="assets/img/port-campo.jpg" alt="Planos 3D Villa de Campo y Terrazas">
-              <span class="project-tag">Campestre & Terrazas</span>
-            </div>
-            <div class="project-body">
-              <div>
-                <h3 class="project-title">Villa de Campo y Terrazas</h3>
-                <p class="project-desc">Planos 3D arquitectónicos para vivienda campestre, volumetría, pérgolas y decks.</p>
-              </div>
-              <div class="project-specs-line">
-                <span>3,100 sq ft</span>
-                <span class="text-gold">Ver Detalles →</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- PROJECT 6 -->
-          <div class="project-card" data-title="Penthouse y Condominios Residenciales" data-desc="Planos 3D de distribución habitacional y tablayeso para penthouse de lujo con aislamiento acústico." data-specs="Área: 3,500 sq ft • Revit BIM • 100% Online">
-            <div class="project-media-box">
-              <img src="assets/img/port-penthouse.jpg" alt="Planos 3D Penthouse y Condominio Residencial">
-              <span class="project-tag">Condominio & Penthouse</span>
-            </div>
-            <div class="project-body">
-              <div>
-                <h3 class="project-title">Penthouse & Condominios</h3>
-                <p class="project-desc">Planos 3D de tabiquería liviana, insonorización acústica y acabados de lujo para apartamentos.</p>
-              </div>
-              <div class="project-specs-line">
-                <span>3,500 sq ft</span>
-                <span class="text-gold">Ver Detalles →</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div style="text-align:center;margin-top:3.5rem;">
-          <a href="mailto:admin@attdiv.com?subject=Consulta%20Proyecto%20Planos%203D%20-%20ATTDIV%20LLC" class="btn btn-primary" style="padding:1rem 2.2rem;">
-            <span>Solicitar Cotización de Proyecto por Correo</span>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-          </a>
-        </div>
+    <!-- CALL TO ACTION -->
+    <section style="background: var(--dark); text-align: center; padding: clamp(60px, 8vw, 100px) 8vw;">
+      <div class="stag" style="justify-content: center;">
+        <span>Planos Listos para Tu Obra</span>
+      </div>
+      <h2 class="stitle" style="margin-bottom: 24px;">¿TIENES UN PROYECTO EN <span class="accent">MENTE?</span></h2>
+      <p class="hsub" style="max-width: 580px; margin: 0 auto 32px; text-align: center;">
+        Elaboramos los planos técnicos en 3D que tu contratista y la ciudad necesitan para autorizar y ejecutar tu construcción.
+      </p>
+      <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
+        <a href="index.html#contacto" class="btn-w">Solicitar Asesoría de Planos</a>
+        <a href="servicios.html" class="btn-g">Explorar Servicios 3D</a>
       </div>
     </section>
   </main>
 
   <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container footer-grid">
-      <div class="footer-brand">
-        <a href="index.html" class="logo-brand">
-          <img src="assets/img/logo-horizontal-light.png" alt="ATTDIV LLC" class="logo-img" style="height:44px;">
+  <footer>
+    <div class="ft-grid">
+      <div>
+        <a href="index.html#hero" class="ft-logo">
+          <img src="assets/img/logo-horizontal-light.png" alt="ATTDIV LLC">
         </a>
-        <p>Estudio especializado en el diseño y elaboración de planos 3D de construcción 100% ONLINE en Estados Unidos.</p>
-        <span class="font-mono text-muted" style="font-size:0.75rem;">ATTDIV LLC • Albuquerque, NM</span>
+        <p class="ft-tg">
+          Especialistas en desarrollo de planos constructivos 3D, modelado BIM y soporte técnico para proyectos arquitectónicos en todo EE.UU.
+        </p>
       </div>
-      <div class="footer-col">
+      <div class="ft-col">
         <h4>Servicios 3D</h4>
-        <div class="footer-links-list">
-          <a href="servicios.html">Planos 3D Llave en Mano</a>
-          <a href="servicios.html">Diseño y Conceptualización</a>
-          <a href="servicios.html">Distribución y Tablayeso</a>
-        </div>
+        <ul>
+          <li><a href="servicios.html">Planos de Distribución</a></li>
+          <li><a href="servicios.html">Modelado BIM 3D</a></li>
+          <li><a href="servicios.html">Permisos Municipales</a></li>
+          <li><a href="index.html#simulador">Simulador CAD vs 3D</a></li>
+        </ul>
       </div>
-      <div class="footer-col">
-        <h4>Navegación</h4>
-        <div class="footer-links-list">
-          <a href="index.html">Inicio</a>
-          <a href="servicios.html">Servicios 3D</a>
-          <a href="index.html#contacto">Contacto</a>
-        </div>
+      <div class="ft-col">
+        <h4>Empresa</h4>
+        <ul>
+          <li><a href="index.html#nosotros">Sobre Nosotros</a></li>
+          <li><a href="proyectos.html">Portafolio 3D</a></li>
+          <li><a href="index.html#contacto">Contacto Directo</a></li>
+          <li><a href="mailto:admin@attdiv.com">admin@attdiv.com</a></li>
+        </ul>
       </div>
-      <div class="footer-col">
-        <h4>Contacto Oficial</h4>
-        <div class="footer-links-list">
-          <span style="color:#fff;font-weight:700;">ATTDIV LLC</span>
-          <span style="font-size:0.85rem;color:#8e7d6e;">8206 Louisiana Blvd NE, Ste A #11163, Albuquerque, NM 87113</span>
-          <a href="mailto:admin@attdiv.com" class="text-gold">admin@attdiv.com</a>
-        </div>
+      <div class="ft-col">
+        <h4>Contacto Directo</h4>
+        <ul>
+          <li><a href="mailto:admin@attdiv.com">admin@attdiv.com</a></li>
+          <li style="font-size: 13px; color: var(--gray);">Albuquerque, Nuevo México</li>
+          <li style="font-size: 13px; color: var(--gray);">Lun - Vie: 8:00 - 17:00 PST</li>
+        </ul>
       </div>
     </div>
-    <div class="container footer-bottom">
-      <span>© 2026 ATTDIV LLC. Todos los derechos reservados.</span>
-      <a href="index.html" class="text-gold" style="font-size:0.82rem;">Volver al Inicio ↑</a>
+    <div class="ft-bot">
+      <div class="ft-cp">&copy; 2026 ATTDIV LLC. Todos los derechos reservados.</div>
+      <div class="ft-leg">
+        <a href="#">Términos de Servicio</a>
+        <a href="#">Privacidad Técnica</a>
+      </div>
     </div>
   </footer>
 
-  <!-- MODAL LIGHTBOX FOR PROJECT ZOOM -->
-  <div class="modal-overlay" id="projectModal" aria-hidden="true" role="dialog">
-    <div class="modal-content">
-      <button type="button" class="modal-close-btn" aria-label="Cerrar modal">&times;</button>
-      <img src="" alt="" id="modalImg" style="width:100%;height:auto;border-radius:6px;margin-bottom:1.2rem;display:none;">
-      <h3 id="modalTitle" style="font-size:1.4rem;margin-bottom:0.4rem;color:#fff;"></h3>
-      <p id="modalDesc" style="color:#bfaea0;font-size:0.92rem;line-height:1.6;margin-bottom:1rem;"></p>
-      <div id="modalSpecs" class="font-mono text-gold" style="font-size:0.82rem;padding-top:0.8rem;border-top:1px solid var(--border-subtle);"></div>
-    </div>
-  </div>
+  <!-- MOBILE FLOATING ACTION BAR -->
+  <aside class="mob-bar" aria-label="Acciones rápidas móviles">
+    <a href="mailto:admin@attdiv.com" class="mob-bar-btn mob-bar-mail">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      <span>admin@attdiv.com</span>
+    </a>
+    <a href="index.html#contacto" class="mob-bar-btn mob-bar-cta">
+      <span>Cotizar Planos</span>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </aside>
 
   <script src="assets/js/main.js"></script>
 </body>

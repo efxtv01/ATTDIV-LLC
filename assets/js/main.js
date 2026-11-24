@@ -1,80 +1,200 @@
 /**
- * ATTDIV LLC - Modern Mobile-First Architectural Interactive Script
+ * ATTDIV LLC - ARCHITECTURAL LUXURY INTERACTION SUITE
+ * Inspired by Constructora García Template Interactions
+ * Dual-Cursor, Hero Zoom, Scroll Reveal, Number Counters, 3D Simulator
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  initNavbar();
-  initComparisonSlider();
-  initHotspots();
-  initPortfolioModal();
+  initCursor();
+  initNav();
+  initHeroZoom();
+  initScrollReveal();
+  initCounters();
+  initSimulator();
   initContactForm();
 });
 
 /* ==========================================================================
-   1. NAVBAR & MOBILE DRAWER NAVIGATION
+   1. CONSTRUCTORA GARCÍA DUAL MOUSE CURSOR
    ========================================================================== */
-function initNavbar() {
-  const header = document.querySelector('.header');
-  const toggleBtn = document.getElementById('menuToggle');
-  const drawer = document.getElementById('mobileDrawer');
+function initCursor() {
+  const cur = document.getElementById('cur');
+  const cr = document.getElementById('cring');
+  if (!cur || !cr) return;
 
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 25) {
-      header?.classList.add('scrolled');
-    } else {
-      header?.classList.remove('scrolled');
+  // Touch devices check
+  if (window.matchMedia('(hover: none) or (pointer: coarse)').matches) {
+    cur.style.display = 'none';
+    cr.style.display = 'none';
+    return;
+  }
+
+  let mx = -100, my = -100;
+  let rx = -100, ry = -100;
+  let active = false;
+
+  document.addEventListener('mousemove', (e) => {
+    mx = e.clientX;
+    my = e.clientY;
+    if (!active) {
+      active = true;
+      rx = mx;
+      ry = my;
     }
-  }, { passive: true });
+    cur.style.transform = `translate(${mx - 4}px, ${my - 4}px)`;
+  });
 
-  if (toggleBtn && drawer) {
-    toggleBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const isOpen = drawer.classList.toggle('open');
-      toggleBtn.setAttribute('aria-expanded', isOpen);
+  (function tick() {
+    if (active) {
+      rx += (mx - rx) * 0.12;
+      ry += (my - ry) * 0.12;
+      cr.style.transform = `translate(${rx - 17}px, ${ry - 17}px)`;
+    }
+    requestAnimationFrame(tick);
+  })();
+
+  const hoverTargets = 'a, button, .sv, .pj, .val, .sim-btn, .pr-step, input, select, textarea, .btn-w, .btn-g, .btn-sub';
+  document.querySelectorAll(hoverTargets).forEach((el) => {
+    el.addEventListener('mouseenter', () => cr.classList.add('hov'));
+    el.addEventListener('mouseleave', () => cr.classList.remove('hov'));
+  });
+}
+
+/* ==========================================================================
+   2. NAVIGATION & MOBILE OVERLAY MENU
+   ========================================================================== */
+function initNav() {
+  const nav = document.getElementById('nav');
+  const hbg = document.getElementById('hbg');
+  const mob = document.getElementById('mob');
+  const mobX = document.getElementById('mobX');
+
+  if (nav) {
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('sc', window.scrollY > 40);
+    }, { passive: true });
+  }
+
+  if (hbg && mob) {
+    hbg.addEventListener('click', () => {
+      mob.classList.add('open');
+      document.body.style.overflow = 'hidden';
     });
+  }
 
-    document.addEventListener('click', (e) => {
-      if (!drawer.contains(e.target) && !toggleBtn.contains(e.target) && drawer.classList.contains('open')) {
-        drawer.classList.remove('open');
-        toggleBtn.setAttribute('aria-expanded', 'false');
-      }
-    });
+  if (mobX && mob) {
+    mobX.addEventListener('click', closeMob);
+  }
 
-    drawer.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        drawer.classList.remove('open');
-        toggleBtn.setAttribute('aria-expanded', 'false');
-      });
+  // Close when clicking any menu link inside mobile overlay
+  if (mob) {
+    mob.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', closeMob);
     });
   }
 }
 
-/* ==========================================================================
-   2. INTERACTIVE 3D SIMULATOR (TOUCH & MOUSE LOCKED)
-   ========================================================================== */
-function initComparisonSlider() {
-  const viewer = document.querySelector('.comparison-viewer');
-  const toggleBtns = document.querySelectorAll('.sim-btn');
+function closeMob() {
+  const mob = document.getElementById('mob');
+  if (mob) {
+    mob.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+}
+window.closeMob = closeMob;
 
-  if (!viewer) return;
+/* ==========================================================================
+   3. HERO BACKGROUND ZOOM
+   ========================================================================== */
+function initHeroZoom() {
+  const hero = document.getElementById('hero');
+  if (hero) {
+    // Slight timeout for smooth GPU acceleration trigger
+    setTimeout(() => {
+      hero.classList.add('go');
+    }, 150);
+  }
+}
+
+/* ==========================================================================
+   4. SCROLL REVEAL (IntersectionObserver)
+   ========================================================================== */
+function initScrollReveal() {
+  const reveals = document.querySelectorAll('.rv');
+  if (!reveals.length) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('v');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.08,
+    rootMargin: '0px 0px -40px 0px'
+  });
+
+  reveals.forEach((el) => observer.observe(el));
+}
+
+/* ==========================================================================
+   5. NUMERIC COUNTERS
+   ========================================================================== */
+function initCounters() {
+  const counters = document.querySelectorAll('[data-c]');
+  if (!counters.length) return;
+
+  function runCounter(el, target) {
+    const duration = 1800;
+    const start = performance.now();
+    (function step(now) {
+      const elapsed = Math.min((now - start) / duration, 1);
+      const ease = 1 - Math.pow(1 - elapsed, 3); // ease-out cubic
+      el.textContent = Math.floor(ease * target) + '+';
+      if (elapsed < 1) {
+        requestAnimationFrame(step);
+      }
+    })(start);
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const target = parseInt(entry.target.getAttribute('data-c'), 10);
+        if (!isNaN(target)) {
+          runCounter(entry.target, target);
+        }
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.4 });
+
+  counters.forEach((el) => observer.observe(el));
+}
+
+/* ==========================================================================
+   6. SIMULADOR INTERACTIVO 3D (CAD VS RENDER 3D)
+   ========================================================================== */
+function initSimulator() {
+  const viewport = document.getElementById('simViewport');
+  const handle = document.getElementById('simHandle');
+  const buttons = document.querySelectorAll('.sim-btn');
+  if (!viewport || !handle) return;
 
   let isDragging = false;
 
-  function updateSliderPosition(clientX) {
-    const rect = viewer.getBoundingClientRect();
-    let offsetX = clientX - rect.left;
-    let percentage = (offsetX / rect.width) * 100;
-    percentage = Math.max(0, Math.min(100, percentage));
+  function setPosition(percentage) {
+    const clamped = Math.max(0, Math.min(100, percentage));
+    viewport.style.setProperty('--sim-pos', `${clamped}%`);
 
-    viewer.style.setProperty('--slider-pos', `${percentage}%`);
-
-    toggleBtns.forEach(btn => {
+    buttons.forEach((btn) => {
       const mode = btn.dataset.mode;
-      if (mode === 'blueprint' && percentage <= 5) {
+      if (mode === 'cad' && clamped >= 95) {
         btn.classList.add('active');
-      } else if (mode === 'render' && percentage >= 95) {
+      } else if (mode === 'render' && clamped <= 5) {
         btn.classList.add('active');
-      } else if (mode === 'split' && percentage > 35 && percentage < 65) {
+      } else if (mode === 'split' && clamped > 35 && clamped < 65) {
         btn.classList.add('active');
       } else {
         btn.classList.remove('active');
@@ -82,11 +202,22 @@ function initComparisonSlider() {
     });
   }
 
-  // Mouse Events with preventDefault
-  viewer.addEventListener('mousedown', (e) => {
+  function handlePointer(clientX) {
+    const rect = viewport.getBoundingClientRect();
+    const offsetX = clientX - rect.left;
+    const percentage = (offsetX / rect.width) * 100;
+    setPosition(percentage);
+  }
+
+  // Mouse Dragging
+  handle.addEventListener('mousedown', (e) => {
     isDragging = true;
     e.preventDefault();
-    updateSliderPosition(e.clientX);
+  });
+
+  viewport.addEventListener('mousedown', (e) => {
+    isDragging = true;
+    handlePointer(e.clientX);
   });
 
   window.addEventListener('mouseup', () => {
@@ -95,187 +226,97 @@ function initComparisonSlider() {
 
   window.addEventListener('mousemove', (e) => {
     if (!isDragging) return;
-    e.preventDefault();
-    updateSliderPosition(e.clientX);
+    handlePointer(e.clientX);
   });
 
-  // Touch Events (passive: false with e.preventDefault to lock page scroll)
-  viewer.addEventListener('touchstart', (e) => {
+  // Touch Dragging (Locked, prevents viewport scroll horizontally)
+  handle.addEventListener('touchstart', (e) => {
     isDragging = true;
-    if (e.cancelable) e.preventDefault();
-    const touch = e.touches[0] || e.changedTouches[0];
-    updateSliderPosition(touch.clientX);
-  }, { passive: false });
+  }, { passive: true });
+
+  viewport.addEventListener('touchstart', (e) => {
+    if (e.touches.length > 0) {
+      isDragging = true;
+      handlePointer(e.touches[0].clientX);
+    }
+  }, { passive: true });
 
   window.addEventListener('touchend', () => {
     isDragging = false;
-  });
+  }, { passive: true });
 
-  window.addEventListener('touchcancel', () => {
-    isDragging = false;
-  });
+  window.addEventListener('touchmove', (e) => {
+    if (!isDragging || e.touches.length === 0) return;
+    handlePointer(e.touches[0].clientX);
+  }, { passive: true });
 
-  viewer.addEventListener('touchmove', (e) => {
-    if (!isDragging) return;
-    if (e.cancelable) e.preventDefault();
-    const touch = e.touches[0] || e.changedTouches[0];
-    updateSliderPosition(touch.clientX);
-  }, { passive: false });
-
-  // Mode Switcher Buttons
-  toggleBtns.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      toggleBtns.forEach(b => b.classList.remove('active'));
+  // Preset Buttons
+  buttons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const mode = btn.dataset.mode;
+      buttons.forEach((b) => b.classList.remove('active'));
       btn.classList.add('active');
 
-      const mode = btn.dataset.mode;
-      if (mode === 'split') {
-        viewer.style.setProperty('--slider-pos', '50%');
-      } else if (mode === 'blueprint') {
-        viewer.style.setProperty('--slider-pos', '0%');
+      if (mode === 'cad') {
+        setPosition(100);
       } else if (mode === 'render') {
-        viewer.style.setProperty('--slider-pos', '100%');
+        setPosition(0);
+      } else if (mode === 'split') {
+        setPosition(50);
       }
     });
   });
 }
 
 /* ==========================================================================
-   3. SIMULATOR HOTSPOTS
-   ========================================================================== */
-function initHotspots() {
-  const pins = document.querySelectorAll('.hotspot-pin');
-  const cards = document.querySelectorAll('.sim-hotspot-card');
-
-  pins.forEach(pin => {
-    pin.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const pinNum = pin.textContent.trim();
-
-      cards.forEach(c => {
-        if (c.dataset.pin === pinNum) {
-          c.classList.add('active');
-          c.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        } else {
-          c.classList.remove('active');
-        }
-      });
-    });
-  });
-
-  cards.forEach(card => {
-    card.addEventListener('click', () => {
-      const pinNum = card.dataset.pin;
-      cards.forEach(c => c.classList.remove('active'));
-      card.classList.add('active');
-
-      pins.forEach(p => {
-        if (p.textContent.trim() === pinNum) {
-          p.style.transform = 'scale(1.4)';
-          setTimeout(() => p.style.transform = '', 500);
-        }
-      });
-    });
-  });
-}
-
-/* ==========================================================================
-   4. PORTFOLIO MODAL LIGHTBOX
-   ========================================================================== */
-function initPortfolioModal() {
-  const projectCards = document.querySelectorAll('.project-card');
-  const modalOverlay = document.getElementById('projectModal');
-  const modalImg = document.getElementById('modalImg');
-  const modalTitle = document.getElementById('modalTitle');
-  const modalDesc = document.getElementById('modalDesc');
-  const modalSpecs = document.getElementById('modalSpecs');
-  const modalClose = document.querySelector('.modal-close-btn');
-
-  projectCards.forEach(card => {
-    card.addEventListener('click', () => {
-      if (!modalOverlay) return;
-
-      const title = card.dataset.title || card.querySelector('.project-title')?.textContent || 'Proyecto 3D';
-      const imgSrc = card.querySelector('img')?.getAttribute('src') || '';
-      const desc = card.dataset.desc || card.querySelector('.project-desc')?.textContent || 'Desarrollo integral de planos arquitectónicos 3D online con entrega digital y cumplimiento normativo.';
-      const specs = card.dataset.specs || card.querySelector('.project-specs-line')?.textContent || 'Entrega 100% Online';
-
-      if (modalTitle) modalTitle.textContent = title;
-      if (modalImg && imgSrc) {
-        modalImg.src = imgSrc;
-        modalImg.style.display = 'block';
-      }
-      if (modalDesc) modalDesc.textContent = desc;
-      if (modalSpecs) modalSpecs.textContent = specs;
-
-      modalOverlay.classList.add('active');
-      document.body.style.overflow = 'hidden';
-    });
-  });
-
-  if (modalClose && modalOverlay) {
-    modalClose.addEventListener('click', () => {
-      modalOverlay.classList.remove('active');
-      document.body.style.overflow = '';
-    });
-
-    modalOverlay.addEventListener('click', (e) => {
-      if (e.target === modalOverlay) {
-        modalOverlay.classList.remove('active');
-        document.body.style.overflow = '';
-      }
-    });
-
-    window.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
-        modalOverlay.classList.remove('active');
-        document.body.style.overflow = '';
-      }
-    });
-  }
-}
-
-/* ==========================================================================
-   5. CONTACT FORM (Client Feedback & Direct Email)
+   7. FORMULARIO DE CONTACTO DIRECTO
    ========================================================================== */
 function initContactForm() {
-  const form = document.getElementById('quoteContactForm');
+  const form = document.getElementById('contactForm');
   if (!form) return;
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
+    const btn = form.querySelector('.btn-sub');
+    const name = document.getElementById('fname')?.value || '';
+    const email = document.getElementById('femail')?.value || '';
+    const phone = document.getElementById('fphone')?.value || '';
+    const type = document.getElementById('ftype')?.value || 'Consulta Técnica';
+    const message = document.getElementById('fmsg')?.value || '';
 
-    const name = form.querySelector('[name="name"]')?.value || 'Cliente';
-    const email = form.querySelector('[name="email"]')?.value || 'admin@attdiv.com';
-    const type = form.querySelector('[name="project_type"]')?.value || 'Proyecto 3D';
-    const area = form.querySelector('[name="area"]')?.value || 'No especificada';
-    const msg = form.querySelector('[name="message"]')?.value || '';
+    if (btn) {
+      btn.textContent = 'Procesando Envío...';
+      btn.disabled = true;
+    }
 
-    const submitBtn = form.querySelector('button[type="submit"]');
-    const originalText = submitBtn.innerHTML;
-
-    submitBtn.disabled = true;
-    submitBtn.innerHTML = `<span>Enviando solicitud...</span>`;
+    const subject = encodeURIComponent(`Solicitud Técnica ATTDIV LLC - ${type} - ${name}`);
+    const body = encodeURIComponent(
+      `Estimado equipo técnico de ATTDIV LLC,\n\n` +
+      `Solicito asesoría técnica para el siguiente proyecto:\n\n` +
+      `Nombre / Contacto: ${name}\n` +
+      `Correo: ${email}\n` +
+      `Teléfono: ${phone}\n` +
+      `Tipo de Servicio: ${type}\n\n` +
+      `Descripción del Proyecto:\n${message}\n\n` +
+      `----------------------------------------\n` +
+      `Enviado desde el portal attdiv.com`
+    );
 
     setTimeout(() => {
-      submitBtn.innerHTML = `<span>✓ ¡Solicitud Recibida!</span>`;
-      submitBtn.style.backgroundColor = '#10b981';
+      window.location.href = `mailto:admin@attdiv.com?subject=${subject}&body=${body}`;
+      if (btn) {
+        btn.textContent = '¡Mensaje Preparado! ✓';
+        btn.style.background = '#2e7d32';
+        btn.style.color = '#ffffff';
 
-      alert(
-        `¡Muchas gracias, ${name}!\n\nHemos registrado correctamente tu solicitud de planos 3D para "${type}" (${area}).\nUn especialista técnico de ATTDIV LLC revisará tus especificaciones y se comunicará a ${email}.\n\nTambién puedes escribirnos directamente a: admin@attdiv.com.`
-      );
-
-      // Open mail client as well
-      const mailtoUrl = `mailto:admin@attdiv.com?subject=${encodeURIComponent("Solicitud Planos 3D: " + type)}&body=${encodeURIComponent("Nombre: " + name + "\nCorreo: " + email + "\nTipo: " + type + "\nSuperficie: " + area + "\n\nDetalles:\n" + msg)}`;
-      window.location.href = mailtoUrl;
-
-      form.reset();
-      setTimeout(() => {
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = originalText;
-        submitBtn.style.backgroundColor = '';
-      }, 4000);
-    }, 800);
+        setTimeout(() => {
+          btn.textContent = 'Enviar Solicitud de Planos';
+          btn.style.background = '';
+          btn.style.color = '';
+          btn.disabled = false;
+          form.reset();
+        }, 4000);
+      }
+    }, 600);
   });
 }
